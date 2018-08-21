@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>直接打印</title>
+    <script type="text/javascript" src="swfobject.js"></script>
+	<script type="text/javascript" src="batchPrint.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        //一下脚本用于动态创建swf节点
+        var swfVersionStr = "14.0.0";
+        var xiSwfUrlStr = "playerProductInstall.swf";
+        var flashvars = {};
+        var params = {};
+        params.quality = "high";
+        //params.bgcolor = "#ffffff";//去掉背景色
+        params.allowscriptaccess = "sameDomain";
+        params.allowScriptAccess = "always";
+        params.allowfullscreen = "true";
+        var attributes = {};
+        attributes.id = "FormBatchPrintNoPerViewApp";
+        attributes.name = "FormBatchPrintNoPerViewApp";
+        attributes.align = "middle";
+        swfobject.embedSWF("FormBatchPrintNoPerViewApp.swf", "flashContent", "10px", "10px", swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            onPageLoad();
+        });
+		var myReportAPI; //定义MyReport接口对象
+		var myReportInit = false; //定义MyReport初始化变量
+		//页面加载完成时调用
+		function onPageLoad(){
+			myReportAPI = document.getElementById("FormBatchPrintApp");
+			loadReport();
+		}
+		function onMyReportInitialized(){
+			myReportInit = true;
+			//以下是自定义代码
+			loadReport();
+		}
+		//自定义加载方法1
+		function loadReport() {
+			if (!myReportInit)// 要先判断插件是否初始化
+				return;
+			var host = window.location.host ;
+			var params = new Array();
+			var table = new Array();
+
+			var jsonStr = window.parent.getBatchJson();
+
+			var json = eval("("+jsonStr+")");
+			var reportID = json['printID'];
+			//打印格式xml
+			var formXml = json['formXML'];
+			//var url = getCtrlService(reportID[0]);
+			var paramJson = json['Head'];
+			var tableJson= json['Item'];
+			myReportLoad(formXml, paramJson, tableJson);
+		}
+		function myReportLoad(formXml, params, table) {
+			if (!myReportAPI || !myReportInit)
+			{
+				return;
+			}
+			myReportAPI.loadReport(formXml, params, table);
+		}
+    </script>
+</head>
+ 
+<body>
+ 
+<div style=" text-align:center"><button type="button" hight="30" onclick="loadReport()">直接打印</button> </div>
+ 
+<div id="flashContent" style="visibility: hidden">
+ 
+</div>
+</body>
+</html>

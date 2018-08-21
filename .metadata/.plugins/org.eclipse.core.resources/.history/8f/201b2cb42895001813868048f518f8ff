@@ -1,0 +1,69 @@
+package com;
+/*    */  
+/*    */  import java.io.PrintStream;
+/*    */  import java.util.Hashtable;
+/*    */  import javax.naming.AuthenticationException;
+/*    */  import javax.naming.NamingException;
+/*    */  import javax.naming.directory.DirContext;
+/*    */  import javax.naming.directory.InitialDirContext;
+public class advalidate {
+	
+	
+	/*    */    public static String[] validADLogin(String adUrl, String account, String password)
+	/*    */    {
+	/* 16 */      DirContext ctx = null;
+	/*    */      
+	/* 18 */      String root = "";
+	/* 19 */      Hashtable env = new Hashtable();
+	/* 20 */      env.put("java.naming.factory.initial", "com.sun.jndi.ldap.LdapCtxFactory");
+	/* 21 */      env.put("java.naming.provider.url", adUrl + root);
+	/* 22 */      env.put("java.naming.security.authentication", "simple");
+	/* 23 */      if (account.indexOf("@") < 0) {
+	/* 24 */        account = account + "@sinopec.com";
+	/*    */      }
+	/* 26 */      env.put("java.naming.security.principal", account);
+	/* 27 */      env.put("java.naming.security.credentials", password);
+	/*    */      try
+	/*    */      {
+	/* 30 */        ctx = new InitialDirContext(env);
+	/* 31 */        return new String[] { "-1", "LDAP 认证成功" };
+	/*    */      }     catch (AuthenticationException e)     {
+	/* 33 */        e.printStackTrace();
+	/* 34 */        String msg = e.getMessage();
+	/* 35 */        String errorMsg = e.getMessage();
+	/* 36 */        String errorCode = "";
+	/* 37 */        System.out.println("认证失败:" + e.getMessage());
+	/* 38 */        if (msg.indexOf("525") != -1)       {
+	/* 39 */          errorMsg = "验证失败,用户名不存在";
+	/* 40 */          errorCode = "525";       }
+	/* 41 */        else if (msg.indexOf("52e") != -1)       {
+	/* 42 */          errorMsg = "验证失败,密码不正确";
+	/* 43 */          errorCode = "52e";
+	/*    */        }       else
+	/*    */        {
+	/* 46 */          errorMsg = "验证失败,其他未知错误";
+	/* 47 */          errorCode = "52";
+	/*    */        }
+	/* 49 */        return new String[] { errorCode, errorMsg };
+	/*    */      }     catch (Exception e)     {       String[] arrayOfString;
+	/* 51 */        System.out.println("认证出错：");
+	/* 52 */        e.printStackTrace();
+	/* 53 */        return new String[] { "-1", e.getMessage() };
+	/*    */      }     finally     {       try
+	/*    */        {
+	/* 56 */          if (ctx != null) {
+	/* 57 */            ctx.close();
+	/*    */          }       }       catch (NamingException e)
+	/*    */        {
+	/* 60 */          e.printStackTrace();
+	/*    */        }
+	/*    */      }
+	/*    */    }
+	/*    */    
+	/*    */    public static void main(String[] args) {
+					String[] res = validADLogin("ftp://192.168.67.1","cn=Manager,dc=test,dc=com","123456");
+				
+					System.out.println(res);
+				}		
+	/*    */  }
+

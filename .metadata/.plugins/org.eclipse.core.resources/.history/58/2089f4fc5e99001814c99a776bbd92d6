@@ -1,0 +1,12 @@
+package com.rmi.client;
+
+public class claA {
+	private static String name ="dingsheng";
+public static void main(String[] args) {
+	System.out.println(name);
+	clasB cb = new clasB();
+	name="zhanghuan";
+	cb.getName();
+	System.out.println(name);
+}
+}

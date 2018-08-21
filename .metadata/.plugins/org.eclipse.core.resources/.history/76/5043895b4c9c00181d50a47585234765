@@ -1,0 +1,47 @@
+package thrifttest;
+
+public class invokother {
+	public void testthrift() {
+		try {
+            //private static final Logger LOGGER = LoggerFactory.getLogger(Processor.class.getName());
+             
+            //System.setProperty("log4j.configuration", "log4j.properties");
+             
+            int port = 9090;
+              // Processor
+            ThriftServer testHandler =
+                new ThriftServer();
+              ThriftTest.Processor testProcessor =
+                new ThriftTest.Processor(testHandler);
+ 
+              // Transport
+              TServerSocket tServerSocket =
+                new TServerSocket(port);
+ 
+              // Protocol factory
+              TProtocolFactory tProtocolFactory =
+                new TBinaryProtocol.Factory();
+ 
+              TServer serverEngine;
+ 
+              // Simple Server
+              //serverEngine = new TSimpleServer(new Args(tServerSocket).processor(testProcessor));
+ 
+              // ThreadPool Server
+              serverEngine = new TThreadPoolServer(new TThreadPoolServer.Args(tServerSocket).processor(testProcessor).protocolFactory(tProtocolFactory));
+ 
+              //Set server event handler
+              serverEngine.setServerEventHandler(new TestServerEventHandler());
+ 
+              // Run it
+              System.out.println("Starting the server on port " + port + "...");
+              serverEngine.serve();
+               
+        } catch (Exception x) {
+ 
+            x.printStackTrace();
+ 
+        }
+        System.out.println("done.");
+	}
+}

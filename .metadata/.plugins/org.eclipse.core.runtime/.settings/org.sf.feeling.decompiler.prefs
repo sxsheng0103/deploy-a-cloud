@@ -1,0 +1,6 @@
+-8=true
+-stat=true
+-v=true
+CLASS_FILE_ATTR_show_constantPool=true
+eclipse.preferences.version=1
+org.sf.feeling.decompiler.type=JD-Core

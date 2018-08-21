@@ -1,0 +1,7 @@
+package com.rmi.client;
+
+public class claA {
+public static void main(String[] args) {
+	
+}
+}

@@ -1,0 +1,68 @@
+package com.cache;
+
+import java.util.Map;
+import java.util.Set;
+
+public class CacheManagerImpl implements ICacheManager {
+
+	@Override
+	public void putCache(String key, EntityCache cache) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void putCache(String key, Object datas, long timeOut) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public EntityCache getCacheByKey(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object getCacheDataByKey(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<String, EntityCache> getCacheAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isContains(String key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clearAll() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void clearByKey(String key) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean isTimeOut(String key) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Set<String> getAllKeys() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

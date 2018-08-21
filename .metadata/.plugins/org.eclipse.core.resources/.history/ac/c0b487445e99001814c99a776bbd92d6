@@ -1,0 +1,8 @@
+package com.rmi.client;
+
+public class claA {
+	private String name ="dingsheng";
+public static void main(String[] args) {
+	
+}
+}

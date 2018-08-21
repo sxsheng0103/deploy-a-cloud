@@ -1,0 +1,111 @@
+<HTML>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>无标题文档</title> 
+</head>
+<script language="javascript">
+  
+	function openFile(){
+		//调用applet的方法
+		fileApplet.openFile();
+	}
+		
+	function saveFile(){
+		//调用applet的方法
+		fileApplet.saveFile();
+	}
+
+   function getParameter(param)
+	{
+		var query = window.location.search;//获取URL地址中？后的所有字符
+		var iLen = param.length;//获取你的参数名称长度
+		var iStart = query.indexOf(param);//获取你该参数名称的其实索引
+		if (iStart == -1)//-1为没有该参数
+			return "";
+		iStart += iLen + 1;
+		var iEnd = query.indexOf("&", iStart);//获取第二个参数的其实索引
+		if (iEnd == -1)//只有一个参数
+			return query.substring(iStart);//获取单个参数的参数值
+		return query.substring(iStart, iEnd);//获取第二个参数的值
+	}
+
+	function init() {
+		var query = window.location.search;
+		fileApplet.setParameter(query);
+		//fileApplet.loadFile();
+	} 
+	
+	function saveBtn(){
+	//var param = {FileType:"Word.Document",FilePath:"WEB-INF.frptSpace",FileName:"www.docx"};
+	var param = "FileType=Word.Document;FilePath=WEB-INF;frptSpace=FileName:www.docx";
+	fileApplet.setParameter("?FileType=Word.Document&FilePath=WEB-INF.frptSpace&FileName=www_bak.docx");
+	fileApplet.saveFile();
+	//saveFile(param);
+	}
+	
+	function loadFile(param){
+		//调用applet的方法
+		fileApplet.loadFileFStr(param);
+	}
+		
+	function saveFile(param){
+		//调用applet的方法
+		fileApplet.saveFileFStr(param);
+	}
+	
+</script>
+
+<body>
+<input id="but1" type="button" value="保存" onclick="saveBtn()"/>
+<applet code="wordApplet.class" name="fileApplet" archive="ESPOLEService.jar" height="100%" width ="100%">
+</applet>
+
+ <!--"CONVERTED_APPLET"-->
+
+<!-- HTML CONVERTER -->
+<!--object
+    classid="clsid:CAFEEFAC-0015-0000-0000-ABCDEFFEDCBA"
+    codebase="http://java.sun.com/update/1.5.0/jinstall-1_5_0-windows-i586.cab#Version=1,5,0,0"
+    WIDTH=400 HEIGHT=300 NAME="wordApplet" ALIGN=middle VSPACE=0 HSPACE=0 >
+    <PARAM NAME=CODE VALUE="wordApplet.class" >
+
+    <PARAM NAME=CODEBASE VALUE="." >
+
+    <PARAM NAME=ARCHIVE VALUE="ESPOLEService.jar,swt.jar" >
+
+    <PARAM NAME=NAME VALUE="wordApplet" >
+    <param name="type" value="application/x-java-applet;jpi-version=1.5">
+    <param name="scriptable" value="false">
+
+    <comment>
+		<embed
+            type="application/x-java-applet;jpi-version=1.5"
+            CODE="jcomponent.FileReaderApplet.class"
+            JAVA_CODEBASE = "." 
+            ARCHIVE="ESPOLEService.jar,swt.jar" 
+            NAME="wordApplet" 
+            WIDTH=400 
+            HEIGHT=300 
+            ALIGN=middle 
+            VSPACE=0 
+            HSPACE=0
+			scriptable=false
+			pluginspage="http://java.sun.com/products/plugin/index.html#download">
+			<noembed>
+            
+            </noembed>
+		</embed>
+    </comment>
+</object-->
+
+<!--
+<APPLET CODE = "jcomponent.FileReaderApplet.class" JAVA_CODEBASE = "." ARCHIVE = "MyApplet.jar" WIDTH = 400 HEIGHT =
+
+300 NAME = "TestApplet" ALIGN = middle VSPACE = 0 HSPACE = 0>
+
+</APPLET>
+-->
+<!--"END_CONVERTED_APPLET"-->
+  
+</body>
+</HTML>

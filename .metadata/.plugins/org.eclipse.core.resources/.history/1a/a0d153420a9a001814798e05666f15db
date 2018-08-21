@@ -1,0 +1,232 @@
+package com.codescan;
+
+import com.efounder.eai.EAI;
+import com.efounder.eai.data.JParamObject;
+import com.efounder.eai.data.JResponseObject;
+import com.efounder.gwt.core.client.eai.ICallback;
+import com.efounder.gwt.core.client.eai.WebContext;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.Anchor;
+
+public class testscan {
+	boolean isScanLoginState = false;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Anchor scanLogin = new Anchor();
+
+		scanLogin.setText("扫描二维码登录");
+
+		scanLogin.addClickHandler(new ClickHandler() {
+
+		@Override
+
+		public void onClick(ClickEvent event) {
+
+		if ( isScanLoginState ) return;
+
+		cardContainer.setActiveWidget(scanLoginBox);
+
+		isScanLoginState = true;
+
+		JParamObject po = JParamObject.Create();
+
+		// 可以自定义系统产品名称，移动端获取到并显示
+
+		po.setParam("ProductName", "OSP企业应用");
+
+		EAI.DAL.IOM("QRCodeLogin", "getQRCodeUUID", po, getQRCodeCallback, null);
+
+		}
+
+		});
+	}
+	/**
+
+	 * 创建二维码
+
+	 */
+
+	private final ICallback getQRCodeCallback = new ICallback() {
+
+		@Override
+	
+		public void onSuccess(JResponseObject result, WebContext webContext) {
+	
+		if ( result == null ) {
+	
+		return;
+	
+		}
+	
+		String uuid = (String)result.getResponseObject("uuid", null);
+	
+		if ( uuid == null || uuid.trim().length() == 0 ) {
+	
+		return;
+	
+		}
+	
+		JParamObject po = JParamObject.Create();
+	
+		String dbno = (String)po.getEnv("DBNO", "");
+	
+		String dataBaseName = (String)po.getEnv("DataBaseName", "");
+	
+		String poParam = "";
+	
+		if ( dbno != null && dataBaseName != null && !dbno.isEmpty() && !dataBaseName.isEmpty() ) {
+	
+		poParam = "PO=DBNO=" + dbno + ";DataBaseName=" + dataBaseName;
+	
+		}
+	
+		String appConfirmLoginUrl = EAI.getBaseURL() + "CtrlService?action=ScanLogin&uuid=" + uuid;
+	
+		if ( poParam != null && !poParam.isEmpty() ) {
+	
+		appConfirmLoginUrl += "&" + poParam;
+	
+		}
+	
+		// 组织二维码的信息
+	
+		String qrText = appConfirmLoginUrl;
+	
+		qrCode.setText(qrText);
+	
+		// 长连接，等待app扫描成功
+	
+		checkScanLongPolling(uuid);
+	
+		}
+
+	};
+	/**
+
+	 * 长轮询，等待app扫码成功
+
+	 */
+
+	private void checkScanLongPolling(final String uuid) {
+
+		// 如果不是扫描二维码登录状态，则不处理
+	
+		if ( !isScanLoginState ) return;
+	
+		JParamObject po = JParamObject.Create();
+	
+		po.setParam("uuid", uuid);
+	
+		EAI.DAL.IOM("QRCodeLogin", "checkScanQRCode", po, new ICallback() {
+	
+		@Override
+	
+		public void onSuccess(JResponseObject result, WebContext webContext) {
+	
+		int errCode = result.getErrorCode();
+	
+		// 确认扫码成功，则调用检查确认登录的方法
+	
+		if ( errCode == 0 ) {
+	
+		GWT.log(result.getErrorString());
+	
+		scanLabel.setText("成功扫描二维码");
+	
+		checkLoginLongPolling(uuid);
+	
+		}
+	
+		// 继续等待扫描成功
+	
+		else if ( errCode == 1 ) {
+	
+		GWT.log(result.getErrorString());
+	
+		checkScanLongPolling(uuid);
+	
+		} else {
+	
+		GWT.log(result.getErrorString());
+	
+		isScanLoginState = false;
+	
+		}
+	
+		}
+	
+		}, null);
+
+	}
+	/**
+
+	 * 长轮询，等待app确认登录
+
+	 */
+
+	private void checkLoginLongPolling(final String uuid) {
+
+	// 如果不是扫描二维码登录状态，则不处理
+
+	if ( !isScanLoginState ) return;
+
+	JParamObject po = JParamObject.Create();
+
+	po.setParam("uuid", uuid);
+
+	EAI.DAL.IOM("QRCodeLogin", "checkLoginConfirm", po, new ICallback() {
+
+	@Override
+
+	public void onSuccess(JResponseObject result, WebContext webContext) {
+
+	int errCode = result.getErrorCode();
+
+	// 确认登录成功，则调用自定义登录方法
+
+	if ( errCode == 0 ) {
+
+	isScanLoginState = false;
+
+	GWT.log(result.getErrorString());
+
+	JParamObject po = JParamObject.create();
+
+	po.setEnv("LoginCheckType", "ScanQRCodeLogin");
+
+	po.setParam("uuid", uuid);
+
+	po.setEnv("UserName", result.getResponseObject("UserName", ""));
+
+	loginProduct(po);
+
+	}
+
+	//
+
+	else if ( errCode == 1 ) {
+
+	GWT.log(result.getErrorString());
+
+	checkLoginLongPolling(uuid);
+
+	} else {
+
+	GWT.log(result.getErrorString());
+
+	isScanLoginState = false;
+
+	}
+
+	}
+
+	}, null);
+
+	}
+
+	 
+	 
+	 
+	
+}

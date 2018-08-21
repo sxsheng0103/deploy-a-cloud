@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCache" project="soapweb" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.cache.TestCache" time="20.026">
+    <testcase name="testThredSafe" classname="com.cache.TestCache" time="0.021"/>
+    <testcase name="testCacheManager" classname="com.cache.TestCache" time="20.005"/>
+  </testsuite>
+</testrun>

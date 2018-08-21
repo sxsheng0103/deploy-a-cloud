@@ -1,0 +1,12 @@
+#数据库链接驱动
+#driver=net.sourceforge.jtds.jdbc.Driver
+driver=oracle.jdbc.driver.OracleDriver
+#数据库链接url
+#url=jdbc:jtds:sqlserver://192.168.134.251:1433;DatabaseName=vrvPrintDB
+url=jdbc:oracle:thin:@localhost:1521:orcl
+#用户名
+#username=sa
+username=testtest
+#密码
+#password=vrv@123456
+password=123456

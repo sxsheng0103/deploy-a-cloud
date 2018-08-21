@@ -1,0 +1,93 @@
+<HTML>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="testJRE.js" type="text/javascript"></script>
+</head>
+<script>
+	
+	function openFile(){
+		//调用applet的方法
+		fileApplet.openFile();
+	}
+		
+	function saveFile(){
+		//调用applet的方法
+		fileApplet.saveFile();
+	}
+	
+	function loadFile(param){
+		//调用applet的方法
+		fileApplet.loadFile(param);
+	}
+		
+	function saveFile(param){
+		//调用applet的方法
+		fileApplet.saveFile(param);
+	}
+	
+	function saveBtn(param){
+	//var param = "FileType=Word.Document;FilePath=WEB-INF;frptSpace=FileName:www.docx";
+	//fileApplet.setParameter("?FileType=Word.Document&FilePath=WEB-INF.frptSpace&FileName=www_bak.docx");
+	fileApplet.setParameter(param);
+	fileApplet.saveFile();
+	//saveFile(param);
+	}
+	
+   function getParameter(param)
+	{
+		var query = window.location.search;//获取URL地址中？后的所有字符
+		var iLen = param.length;//获取你的参数名称长度
+		var iStart = query.indexOf(param);//获取你该参数名称的其实索引
+		if (iStart == -1)//-1为没有该参数
+			return "";
+		iStart += iLen + 1;
+		var iEnd = query.indexOf("&", iStart);//获取第二个参数的其实索引
+		if (iEnd == -1)//只有一个参数
+			return query.substring(iStart);//获取单个参数的参数值
+		return query.substring(iStart, iEnd);//获取第二个参数的值
+	}
+
+	function init() {
+		var query = window.location.search;
+		fileApplet.setParameter(query);
+	} 
+	
+		
+	//===以下是检查jre需要用到的方法===
+	
+	 function existJRE() {//检查是否存在jre
+ 		 deployJava.getJREs();
+   }
+
+	 function getJRE() {//下载jre
+ 		 deployJava.installLatestJRE();
+	 }
+
+   function testJRE() {
+  	 var jre = deployJava.getJREs();
+		 if ("" == jre || null == jre )
+	   {
+				alert("请下载安装java插件");
+				//window.open("http://www.java.com/en/download/");  
+				//deployJava.installLatestJRE(); 
+				 var a = document.getElementById("alink");
+  			 a.click();
+		 } else{
+				//alert("您已经安装java插件");
+			 }
+   }
+	
+</script>
+<body onload="testJRE()">
+
+<APPLET id="fileAppletid" code="wordApplet.class" name="fileApplet" archive="ESPOLEService.jar" height="100%" width ="100%">
+</APPLET>
+
+<!--
+<input id="but1" type="button" value="打开" onclick="openFile()"/>
+<input id="but2" type="button" value="测试" onclick="document.openFile()"/>
+
+-->
+<a id="alink" href="jdk.exe" style="display:none">此隐藏的a标签是为了从服务器下载jre而设置</a>
+</body>
+</HTML>

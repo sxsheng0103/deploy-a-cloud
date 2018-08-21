@@ -1,0 +1,136 @@
+package com.cache;
+
+public interface ICacheManager {
+    /**
+     * 存入缓存
+     * @param key
+     * @param cache
+     */
+    void putCache(String key, EntityCache cache);
+ 
+    /**
+     * 存入缓存
+     * @param key
+     * @param cache
+     */
+    void putCache(String key, Object datas, long timeOut);
+ 
+    /**
+     * 获取对应缓存
+     * @param key
+     * @return
+     */
+    EntityCache getCacheByKey(String key);
+ 
+    /**
+     * 获取对应缓存
+     * @param key
+     * @return
+     */
+    Object getCacheDataByKey(String key);
+ 
+    /**
+     * 获取所有缓存
+     * @param key
+     * @return
+     */
+    Map<String, EntityCache> getCacheAll();
+ 
+    /**
+     * 判断是否在缓存中
+     * @param key
+     * @return
+     */
+    boolean isContains(String key);
+ 
+    /**
+     * 清除所有缓存
+     */
+    void clearAll();
+ 
+    /**
+     * 清除对应缓存
+     * @param key
+     */
+    void clearByKey(String key);
+ 
+    /**
+     * 缓存是否超时失效
+     * @param key
+     * @return
+     */
+    boolean isTimeOut(String key);
+ 
+    /**
+     * 获取所有key
+     * @return
+     */
+    Set<String> getAllKeys();
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67

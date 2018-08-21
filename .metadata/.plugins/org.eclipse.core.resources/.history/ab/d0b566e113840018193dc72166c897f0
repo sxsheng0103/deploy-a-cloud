@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project name="JSYTTJFXXT" default="copy" basedir=".">
+
+		<target name="init">
+			<tstamp />
+			<property name="Name" value="JSYTTJFXXT" />
+			<property name="version" value="0.1" />
+			<property name="year" value="2018" />
+
+			<property name="debug" value="on" />
+			<property name="optimize" value="on" />
+			<property name="deprecation" value="on" />
+
+			<property name="src" value="./src" />
+			<property name="root" value="E:\管理目录\3.项目目录\2018\20.SrcCode\OSPServer\WEB-INF\lib\" />
+			<property name="lib" value="${root}" />
+			<property name="classes" value="./bin" />
+
+			<property name="server_root" value="E:\管理目录\3.项目目录\2018\20.SrcCode\OSPServer\WEB-INF\lib\" />
+
+			<path id="compile.classpath">
+				<fileset dir="${root}">
+					<include name="*.jar" />
+				</fileset>
+				<pathelement location="${classes}" />
+			</path>
+			<mkdir dir="${classes}" />
+		</target>
+
+		<target name="compile" depends="init">
+			<!--
+			<javac srcdir="${src}" destdir="${classes}" fork="true" memorymaximumsize="256m">
+				<classpath refid="compile.classpath" />
+			</javac>
+			!-->
+		</target>
+
+		<target name="clean" depends="compile">
+			<delete>
+				<fileset dir="${root}">
+					<include name="YSGL_FGS.jar" /><!--分公司预算 !-->
+					<include name="YSGL_KTJ.jar" /><!--勘探局预算  !-->
+					<include name="ZCGL_FGS.jar" /><!-- 分公司资产  !-->
+					<include name="ZCGL_KTJ.jar" /><!-- 勘探局资产  !-->
+					<include name="TJFXXT.jar" /><!-- 统计分析  !-->
+					<include name="GGGLXT.jar" /><!-- 公共管理  !-->
+					<include name="DJGLXT.jar" /><!--  单井管理  !-->
+					<include name="XTGLXT.jar" /><!--  系统管理  !-->
+				</fileset>
+			</delete>
+		</target>
+		<target name="package" depends="clean">
+			<!--分公司预算 -->
+			<jar jarfile="${root}/YSGL_FGS.jar">
+				<fileset dir="${classes}">
+					<include name="Resource/**" />
+					<include name="com/ysgl/fgs/**" />
+				</fileset>
+				<fileset dir="${classes}">
+					<include name="Package/client/package11.xml" />
+					<include name="Package/server/package11.xml" />
+				</fileset>
+			</jar>
+			<!--勘探局预算 -->
+			<jar jarfile="${root}/YSGL_KTJ.jar">
+				<fileset dir="${classes}">
+					<include name="Resource/**" />
+					<include name="com/ysgl/ktj/**" />
+				</fileset>
+				<fileset dir="${classes}">
+					<include name="Package/client/package12.xml" />
+					<include name="Package/server/package12.xml" />
+				</fileset>
+			</jar>
+			<!-- 分公司资产   -->
+			<jar jarfile="${root}/ZCGL_FGS.jar">
+						<fileset dir="${classes}">
+							<include name="Resource/**" />
+							<include name="com/zcgl/fgs/**" />
+						</fileset>
+						<fileset dir="${classes}">
+							<include name="Package/client/package21.xml" />
+							<include name="Package/server/package21.xml" />
+						</fileset>
+			</jar>
+			<!-- 勘探局资产   -->
+			<jar jarfile="${root}/ZCGL_KTJ.jar">
+						<fileset dir="${classes}">
+							<include name="Resource/**" />
+							<include name="com/zcgl/ktj**" />
+						</fileset>
+						<fileset dir="${classes}">
+							<include name="Package/client/package22.xml" />
+							<include name="Package/server/package22.xml" />
+						</fileset>
+			</jar>
+			<!-- 统计分析  -->
+			<jar jarfile="${root}/TJFXXT.jar">
+						<fileset dir="${classes}">
+							<include name="Resource/**" />
+							<include name="com/tjfxxt/**" />
+						</fileset>
+						<fileset dir="${classes}">
+							<include name="Package/client/package41.xml" />
+							<include name="Package/server/package41.xml" />
+						</fileset>
+			</jar>
+			<!-- 公共管理  -->
+			<jar jarfile="${root}/GGGLXT.jar">
+						<fileset dir="${classes}">
+							<include name="Resource/**" />
+							<include name="com/gggl/**" />
+						</fileset>
+						<fileset dir="${classes}">
+							<include name="Package/client/package51.xml" />
+							<include name="Package/server/package51.xml" />
+						</fileset>
+			</jar>
+			<!--  单井管理  -->
+			<jar jarfile="${root}/DJGLXT.jar">
+						<fileset dir="${classes}">
+							<include name="Resource/**" />
+							<include name="com/djgl/**" />
+						</fileset>
+						<fileset dir="${classes}">
+							<include name="Package/client/package31.xml" />
+							<include name="Package/server/package31.xml" />
+						</fileset>
+			</jar>
+			<!--  系统管理  -->
+			<jar jarfile="${root}/XTGLXT.jar">
+						<fileset dir="${classes}">
+							<include name="Resource/**" />
+							<include name="com/xtgl/**" />
+						</fileset>
+						<fileset dir="${classes}">
+							<include name="Package/client/package61.xml" />
+							<include name="Package/server/package61.xml" />
+						</fileset>
+			</jar>
+		</target>
+		<target name="copy" depends="package">
+			<copy todir="${server_root}">
+				<fileset dir="${root}">
+					<include name="YSGL_FGS.jar" />  <!--分公司预算 !-->
+					<include name="YSGL_KTJ.jar" />  <!--勘探局预算  !-->
+					<include name="ZCGL_FGS.jar" />  <!-- 分公司资产  !-->
+					<include name="ZCGL_KTJ.jar" />  <!-- 勘探局资产  !-->
+					<include name="TJFXXT.jar" />    <!-- 统计分析  !-->
+					<include name="GGGLXT.jar" />    <!-- 公共管理  !-->
+					<include name="DJGLXT.jar" />    <!--  单井管理  !-->
+					<include name="XTGLXT.jar" />    <!--  系统管理  !-->
+				</fileset>
+			</copy>
+		</target>
+
+	</project>

@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/com/zero/wxpay/Const.java=UTF-8
+encoding//src/com/zero/wxpay/WXPayConfigImpl.java=UTF-8
+encoding//src/com/zero/wxpay/WXPayRefundReciver.java=UTF-8
+encoding//src/com/zero/wxpay/WXPaySender.java=UTF-8
+encoding//src/com/zero/wxpay/WXPayTradeReciver.java=UTF-8
+encoding//src/test/java/TestSender.java=UTF-8

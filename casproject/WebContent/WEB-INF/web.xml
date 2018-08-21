@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>casproject</display-name>
+  <!-- ======================== start登录=======================-->
+	<!-- 用于单点登录 -->
+	<filter>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
+		<init-param>
+			<param-name>casServerLoginUrl</param-name>
+			<param-value>http://192.168.100.2:8092/cas/login</param-value>
+		</init-param>
+		<init-param>
+			<param-name>serverName</param-name>
+			<param-value>http://192.168.100.2:8092</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 该过滤器负责Ticket的校验工作 -->
+	<filter>
+        <filter-name>CAS Validation Filter</filter-name>
+        <filter-class>
+            org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>
+        <init-param>
+            <param-name>casServerUrlPrefix</param-name>
+            <param-value>http://192.168.100.2:8092/cas</param-value><!--不加cas ??? -->
+        </init-param>
+        <init-param>
+            <param-name>serverName</param-name>
+            <param-value>http://192.168.100.2:8092</param-value>
+        </init-param>
+        <!--
+1	    <init-param>
+1	        <param-name>proxyCallbackUrl</param-name>
+1	        <param-value>https://client.gevin.me:8443/clientB/proxyCallback</param-value>
+1	    </init-param>
+1	    <init-param>
+1	        <param-name>proxyReceptorUrl</param-name>
+1	        <param-value>/clientB/proxyCallback</param-value>
+2	    </init-param>
+2	    -->
+    </filter>
+    <filter-mapping>
+        <filter-name>CAS Validation Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- 该过滤器负责实现HttpServletRequest请求的包裹 -->
+    <filter>
+        <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+        <filter-class>
+            org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--自定义cas设置user过滤器-->
+    <!-- <filter>
+        <display-name>AutoSetUserAdapterFilter</display-name>
+        <filter-name>AutoSetUserAdapterFilter</filter-name>
+        <filter-class>com.cdt.cas.client.casClientFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AutoSetUserAdapterFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> -->
+    <!-- 
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
+			FilterChain chain) throws IOException, ServletException {
+		Date startTime = new Date();
+		System.out.println("CasClient开始时间"+startTime.getTime());
+		final HttpServletRequest request = (HttpServletRequest) servletRequest;
+		final HttpServletResponse response = (HttpServletResponse) servletResponse;
+		final HttpSession session = request.getSession(false);
+		final Assertion assertion = (Assertion) (session == null ? request
+				.getAttribute(AbstractCasFilter.CONST_CAS_ASSERTION) : session
+				.getAttribute(AbstractCasFilter.CONST_CAS_ASSERTION));
+		String username = assertion == null ? null : assertion.getPrincipal().getName();
+		//_const_cas_assertion_是CAS中存放登录用户名的session标志
+	    Object object = request.getSession().getAttribute("_const_cas_assertion_");
+	  
+	    
+	    String url = request.getRequestURL().toString();
+
+
+		if(object != null && username != null) {
+			
+			//存放用户类型
+			session.setAttribute("userType", "2");
+			//设置cookie
+			Cookie cookie = new Cookie("username",username);
+			int maxAge = 60*60*24*365;	//cookie存活时间1年
+			cookie.setMaxAge(maxAge);
+			response.addCookie(cookie);
+			
+		
+			
+		}
+		if (chain != null) {
+			chain.doFilter(request, response);
+		}
+		Date endTime = new Date();
+		System.out.println("CasClient结束时间"+endTime.getTime());
+	}
+     -->
+    <!-- ======================================================= -->
+    <!-- ========================登出=========================== -->
+    <listener>
+		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+	</listener>
+    <filter>
+		<filter-name>CAS Single Sign Out Filter</filter-name>
+		<filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
+		<init-param>
+			<param-name>casServerUrlPrefix</param-name>
+			<param-value>https://192.168.100.2:8092/cas</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Single Sign Out Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+    <!-- ======================================================= -->
+    <filter>
+        <filter-name>CAS Assertion Thread Local Filter</filter-name>
+        <filter-class>org.jasig.cas.client.util.AssertionThreadLocalFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CAS Assertion Thread Local Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- ======================== end ======================== -->
+  <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
+  	<welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

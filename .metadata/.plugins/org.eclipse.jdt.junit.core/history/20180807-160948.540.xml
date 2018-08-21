@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestSender" project="wxpay" tests="5" started="5" failures="0" errors="5" ignored="0">
+  <testsuite name="test.java.TestSender" time="0.031">
+    <testcase name="doOrderQuery" classname="test.java.TestSender" time="0.027">
+      <error>java.lang.Exception: No runnable methods&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.testAborted(TestClassMethodsRunner.java:42)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.invokeTestMethod(TestClassMethodsRunner.java:68)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.run(TestClassMethodsRunner.java:35)&#13;
+	at org.junit.internal.runners.TestClassRunner$1.runUnprotected(TestClassRunner.java:42)&#13;
+	at org.junit.internal.runners.BeforeAndAfterRunner.runProtected(BeforeAndAfterRunner.java:34)&#13;
+	at org.junit.internal.runners.TestClassRunner.run(TestClassRunner.java:52)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="doOrderClose" classname="test.java.TestSender" time="0.001">
+      <error>java.lang.Exception: No runnable methods&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.testAborted(TestClassMethodsRunner.java:42)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.invokeTestMethod(TestClassMethodsRunner.java:68)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.run(TestClassMethodsRunner.java:35)&#13;
+	at org.junit.internal.runners.TestClassRunner$1.runUnprotected(TestClassRunner.java:42)&#13;
+	at org.junit.internal.runners.BeforeAndAfterRunner.runProtected(BeforeAndAfterRunner.java:34)&#13;
+	at org.junit.internal.runners.TestClassRunner.run(TestClassRunner.java:52)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="doRefundQuery" classname="test.java.TestSender" time="0.0">
+      <error>java.lang.Exception: No runnable methods&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.testAborted(TestClassMethodsRunner.java:42)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.invokeTestMethod(TestClassMethodsRunner.java:68)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.run(TestClassMethodsRunner.java:35)&#13;
+	at org.junit.internal.runners.TestClassRunner$1.runUnprotected(TestClassRunner.java:42)&#13;
+	at org.junit.internal.runners.BeforeAndAfterRunner.runProtected(BeforeAndAfterRunner.java:34)&#13;
+	at org.junit.internal.runners.TestClassRunner.run(TestClassRunner.java:52)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="doRefund" classname="test.java.TestSender" time="0.002">
+      <error>java.lang.Exception: No runnable methods&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.testAborted(TestClassMethodsRunner.java:42)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.invokeTestMethod(TestClassMethodsRunner.java:68)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.run(TestClassMethodsRunner.java:35)&#13;
+	at org.junit.internal.runners.TestClassRunner$1.runUnprotected(TestClassRunner.java:42)&#13;
+	at org.junit.internal.runners.BeforeAndAfterRunner.runProtected(BeforeAndAfterRunner.java:34)&#13;
+	at org.junit.internal.runners.TestClassRunner.run(TestClassRunner.java:52)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="doUnifiedOrder" classname="test.java.TestSender" time="0.001">
+      <error>java.lang.Exception: No runnable methods&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.testAborted(TestClassMethodsRunner.java:42)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.invokeTestMethod(TestClassMethodsRunner.java:68)&#13;
+	at org.junit.internal.runners.TestClassMethodsRunner.run(TestClassMethodsRunner.java:35)&#13;
+	at org.junit.internal.runners.TestClassRunner$1.runUnprotected(TestClassRunner.java:42)&#13;
+	at org.junit.internal.runners.BeforeAndAfterRunner.runProtected(BeforeAndAfterRunner.java:34)&#13;
+	at org.junit.internal.runners.TestClassRunner.run(TestClassRunner.java:52)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

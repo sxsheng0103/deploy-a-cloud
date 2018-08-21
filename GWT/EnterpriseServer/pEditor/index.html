@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PhotoEditor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/imglykit-night-ui.css">
+    <link rel="stylesheet" href="css/images.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body style="padding: 0; margin: 0; outline: 0;">
+    <!--<div id="containerAll" name="contain" style="width:100%; height: 100%">-->
+        <div id="center" style="height: 100%; width: 100%">
+            <div id="centerContainer" style="width:100%; height: 81%;">
+                <div id="container" style="width: 100%; height:100%;">
+                </div>
+            </div>
+            <div id="slideDown" style="width: 100%; height:8px; text-align: center; cursor: pointer;">
+                <img id="shang" src="assets/shang.png" style="position:relative;bottom: 5px"/>
+            </div>
+            <div id="centerDown" style="width: 100%; height: 16%">
+                <div id="scroll">
+                    <ul class="imgList">
+                        <!--li>
+                            <a href="#" class="image">
+                                <img src="./adriana2.jpg" alt="" width="120" height="120">
+                            </a>
+                            <input type="checkbox" name="isSelected"/>
+                        </li-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/imglykit.js"></script>
+<script>
+
+    // array
+    var affixObjects = null;
+
+    // map
+    var affixPO = null;
+
+    var baseURL = null;
+
+    // 当前选中的索引
+    var selectedIndex = -1;
+
+    var oldSelectedIndex = -1;
+
+    // 增加附件回调函数
+    var addAffixCallback = null;
+
+    // 删除附件回调函数
+    var removeAffixCallback = null;
+
+    /**
+     * 设置选中的图片索引
+     */
+    function setSelectedIndex(selectedIndex) {
+        oldSelectedIndex = window.selectedIndex;
+        window.selectedIndex = selectedIndex;
+    }
+
+    /**
+     * 获取图片选中的索引
+     */
+    function getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    /**
+     * 拍照或导入图片时，点击返回按钮，显示的之前显示的图片
+     */
+    function displayLastImageOnReturn() {
+        setSelectedIndex(oldSelectedIndex);
+        showSelectedImage();
+    }
+
+    /**
+     * 初始调用，显示影像信息
+     * @param 附件对象列表
+     * @param PO对象
+     */
+    function openImages(affixObjects, affixPO, addAffixCallback, removeAffixCallback){
+
+        initApp();
+
+        baseURL = affixPO["baseURL"];
+
+        window.affixObjects = affixObjects;
+        window.affixPO = affixPO;
+        window.addAffixCallback = addAffixCallback;
+        window.removeAffixCallback = removeAffixCallback;
+
+        if ( affixObjects != null && affixObjects.length > 0 ) {
+            setSelectedIndex(0);
+        }
+
+        refreshImages();
+    }
+
+    /**
+     * 初始化应用
+     */
+    function initApp() {
+        renderImage("");
+    }
+    
+    /**
+     * 刷新显示的图片
+     */
+    function refreshImages() {
+    	$(".imgList").empty();
+
+    	for(var i=0; affixObjects!=null && i < affixObjects.length; i++){
+            var affixObject = affixObjects[i];
+            var url = affixObject["url"] + "&PO=DBNO=" + affixPO["DBNO"] + ";DataBaseName=" + affixPO["DataBaseName"] + "&v=" + (new Date()).getTime();
+
+            var itemHtml = "<li>";
+            itemHtml +=         '<a href="#" class="image" id="' + i + '">';
+            itemHtml +=             '<img src="' + url + '" id="img' + i + '" alt="" width="80" height="80">';
+            itemHtml +=         '</a>';
+            itemHtml +=         '<input type="checkbox" id="checkbox' + i + '" data-index="' + i + '" name="isSelected"/>';
+            itemHtml +=    '</li>';
+
+            $(".imgList").append(itemHtml);
+        }
+
+        
+        // 设置显示当前选中的图片
+        showSelectedImage();
+        
+        // 增加点击事件
+        addImageClickHandler();
+    }
+
+    //隐藏加载框
+    function hideLoading(){
+        $(".imglykit-loadingOverlay").css("display","none");
+        $("#imageData").remove();
+    }
+    
+    /**
+     * 在编辑区域，显示选中的图像
+     */
+    function showSelectedImage() {
+
+        // 图片选中时，设置checkbox为选中状态
+        setSelectedImageCheckbox();
+
+         var imgSrc;
+         if ( affixObjects != null && affixObjects.length > 0 ) {
+          	imgSrc = $("#img" + getSelectedIndex()).attr("src");
+         } else {
+         		imgSrc = "";
+         }
+         renderImage(imgSrc);
+  	}
+  
+  	// 渲染图片
+  	function renderImage(imageUrl) {
+
+        // 设置当前缩略图为选中状态，其他的取消选中
+        if ( affixObjects != null && affixObjects.length > 0 && selectedIndex > -1 ) {
+            $(".imgList img").css("border-color", "#FFFFFF");
+            $("#img" + selectedIndex).css("border-color", "darkgoldenrod");
+        }
+
+  		var image, container, kit;
+        image = new Image();
+        image.src = imageUrl;
+
+        container = document.querySelector("div#container");
+
+        if ( imageUrl != null && imageUrl != "" ) {
+            image.onload = function () {
+                kit = new ImglyKit({
+                    image: image,
+                    container: container,
+                    assetsUrl: "./assets",
+                    ui: {
+                        enabled: true
+                    }
+                });
+
+                kit.run();
+            };
+
+        } else {
+
+            kit = new ImglyKit({
+                image: image,
+                container: container,
+                assetsUrl: "./assets",
+                ui: {
+                    enabled: true
+                }
+            });
+
+            kit.run();
+
+        }
+    }
+  
+  	/**
+  	 * 图片列表事件处理
+  	 */
+    function addImageClickHandler(){
+        $(".image").each(function(){
+            $(this).click(function(){
+                setSelectedIndex($(this).attr("id"));
+
+                // 显示选中图片
+                showSelectedImage();
+            })
+        });
+    }
+
+    /**
+     * 获取选中的图片
+     */
+    function getSelectedAffixs() {
+//        if (  ) {
+//
+//        }
+    }
+
+    /**
+     * 图片选中时，设置checkbox为选中状态
+     */
+    function setSelectedImageCheckbox() {
+
+        $(".imgList input[name='isSelected']").each(function(){
+            $(this).prop("checked", false);
+            $(this).attr("checked", false);
+        });
+
+        $("#checkbox" + selectedIndex).prop("checked", true);
+        $("#checkbox" + selectedIndex).attr("checked", true);
+
+    }
+
+    /**
+     * 保存附件到服务器
+     */
+    function saveToServer(image_data) {
+
+        var affixObject = null;
+        if (selectedIndex > -1 && affixObjects.length > selectedIndex) {
+            affixObject = affixObjects[selectedIndex];
+        }
+
+        var dbno = affixPO["DBNO"];
+        var databaseName = affixPO["DataBaseName"];
+
+        var orderTime = (new Date()).getTime();
+        if (affixObject != null) {
+            orderTime = affixObject["order"];
+        }
+
+        var guid = affixPO["guid"];
+
+        var mdlID = affixPO["MDLID"];
+
+        var user = affixPO["user"];
+
+        var affixTable = affixPO["affixTable"];
+        var affixTableB = affixPO["affixTableB"];
+
+
+        $.ajax({
+
+            url: baseURL + 'CtrlService?action=UploadImageService',
+            type: "post",
+            data: {
+                IMAGEDATA: image_data,
+                GUID: guid,
+                MDLID: mdlID,
+                FILE_NAME: orderTime + ".jpg",
+                ORDER: orderTime,
+                CCFS: "DB",
+                PATH: "",
+                WJLX: "1",
+                FJBZBH: "",
+                itemfctId: "",
+                itemBH: "",
+                SIZE: "20",
+                UPLOAD_TYPE: "2",
+                affixTable: affixTable,
+                affixTableB: affixTableB,
+                PO: "DBNO=" + dbno + ";DataBaseName=" + databaseName + ";UserCaption=" + user
+            },
+
+            error: function () {
+                if (selectedIndex == -1) {
+                    addNewAffixObject2List(orderTime);
+                }
+                refreshImages();
+            },
+            beforeSend: function () {
+                //$('#logining').show();
+            },
+            success: function (data) {
+                if (selectedIndex == -1) {
+                    addNewAffixObject2List(orderTime);
+                }
+                refreshImages();
+            }
+        });
+    }
+    /**
+     * 删除附件之前提示
+     */
+    function deleteMind(){
+
+        var affixIndexArr = new Array();
+
+        $(".imgList input[name='isSelected']").each(function () {
+            // 如果选中，则将选中的索引放入待删除列表
+            if ( $(this).is(":checked") ) {
+                affixIndexArr.push($(this).data("index"));
+            }
+        });
+
+        if ( affixIndexArr.length == 0 ) {
+            alert("请选择一个要删除的影像图片");
+            return;
+        }
+        // 取出所有选择的图片
+        var selectedImage = new Array();
+        for(var i=0;  i < affixIndexArr.length; i++) {
+            var affixObject = affixObjects[affixIndexArr[i]];
+            var url = affixObject["url"] + "&PO=DBNO=" + affixPO["DBNO"] + ";DataBaseName=" + affixPO["DataBaseName"];
+            selectedImage[i] = url;
+        }
+        popWin.showWin("400","247","提示",selectedImage);
+    }
+    /**
+     * 删除附件
+     */
+    function deleteAffixFromServer() {
+        if ( affixObjects == null || affixObjects.length == 0 ) {
+            return;
+        }
+
+        // 取出所有选择的图片
+        var affixIndexArr = new Array();
+        $(".imgList input[name='isSelected']").each(function () {
+            // 如果选中，则将选中的索引放入待删除列表
+            if ( $(this).is(":checked") ) {
+                affixIndexArr.push($(this).data("index"));
+            }
+        });
+
+        /*if ( affixIndexArr.length == 0 ) {
+            alert("请选择一个要删除的影像图片");
+            return;
+        }*/
+
+        // 待删除的附件序号数组
+        var deletedOrderStr = "";
+
+        var guid = affixPO["guid"];
+
+        // 待删除的附件信息字符串
+        var deleteList = "";
+        var affixObject = null;
+        for ( var i = 0; i < affixIndexArr.length; i++ ) {
+            var affixIndex = affixIndexArr[i];
+            affixObject = affixObjects[affixIndex];
+            var order = affixObject["order"];
+
+            deleteList += "GUID=" + guid + ",ORDER=" + order + ",CCFS=DB,FILE_NAME=" + order + ".jpg,itemfctId=,itemBH=,WJLX=1,PATH=";
+
+            deletedOrderStr += order;
+
+            // 不是最后一个，则需要加上分号分隔符
+            if ( i != affixIndexArr.length - 1 ) {
+                deleteList += ";";
+                deletedOrderStr += ",";
+            }
+        }
+
+        var dbno = affixPO["DBNO"];
+        var databaseName = affixPO["DataBaseName"];
+        var mdlID = affixPO["MDLID"];
+        var user = affixPO["user"];
+        var affixTable = affixPO["affixTable"];
+        var affixTableB = affixPO["affixTableB"];
+        $.ajax({
+            url: baseURL + 'CtrlService?action=UploadImageService',
+            type: "post",
+
+            data: {
+                MDLID: mdlID,
+                affixTable: affixTable,
+                affixTableB: affixTableB,
+                // 1:删除；2:保存
+                UPLOAD_TYPE: "1",
+                DELETELIST: deleteList,
+                PO: "DBNO=" + dbno + ";DataBaseName=" + databaseName + ";UserCaption=" + user
+            },
+
+            error: function () {
+                // 从图片列表中删除
+                removeAffixFromList(affixIndexArr);
+                // 从单据上删除附件列表
+                if (removeAffixCallback != null) {
+                    removeAffixCallback(deletedOrderStr);
+                }
+                refreshImages();
+            },
+            beforeSend: function () {
+                //$('#logining').show();
+            },
+            success: function (data) {
+                // 从图片列表中删除
+                removeAffixFromList(affixIndexArr);
+                // 从单据上删除附件列表
+                if (removeAffixCallback != null) {
+                    removeAffixCallback(deletedOrderStr);
+                }
+                refreshImages();
+            }
+        });
+    }
+
+    /**
+     * 从附件列表中删除附件
+     * @param indexeArr 要删除的附件索引
+     */
+    function removeAffixFromList(indexArr) {
+        // 将选择的移除掉
+        for ( var i = 0; i < indexArr.length; i++ ) {
+            var index = indexArr[i];
+            delete affixObjects[index];
+        }
+        // 去掉undefined的元素
+        var newArray = new Array();
+        for ( var i = 0; i < affixObjects.length; i++ ) {
+            var affixObj = affixObjects[i];
+            if ( affixObj == undefined ) {
+                continue;
+            }
+            newArray.push(affixObj);
+        }
+
+        affixObjects = newArray;
+
+        if ( affixObjects.length > 0 ) {
+            setSelectedIndex(0);
+        } else {
+            setSelectedIndex(-1);
+        }
+    	
+    }
+    
+    function addNewAffixObject2List(order) {
+    	
+    	var affixObject = new Object();
+			affixObject["guid"] = affixPO["guid"];
+			affixObject["order"] = order;
+			affixObject["fileName"] = order + ".jpg";
+			affixObject["user"] = affixPO["user"];
+			affixObject["storageType"] = "DB";
+			affixObject["path"] = "";
+			affixObject["flFCTID"] = "";
+			affixObject["flbh"] = "";
+			affixObject["EXT_STR01"] = "";
+			affixObject["EXT_STR02"] = "";
+			affixObject["EXT_STR03"] = "";
+			affixObject["EXT_STR04"] = "";
+			affixObject["EXT_STR05"] = "";
+			
+			affixObject["url"] = baseURL + "CtrlService?action=loadFile&fwk=FormAffixService&iom=loadAffixData&PO=DataBaseName="+affixPO["DataBaseName"]+";DBNO="+affixPO["DBNO"]
+				+ "&FileName="+"fileName.jpg"+"&GUID="+affixPO["guid"]+"&ORDE="+order+"&MDLID="+affixPO["MDLID"]+"&affixTable=sys_mdl_affix_"+affixPO["MDLID"]
+				+ "&affixTableB=sys_affix&CCLX="+"DB"+"&SWF_FILE=0"+"&WJLX=" + "1";
+			if ( affixObjects == null ) {
+				affixObjects = new Array();
+			}
+			affixObjects.push(affixObject);
+			
+			// 新增之后，选中最后一个
+			setSelectedIndex(affixObjects.length - 1);
+						
+			if ( addAffixCallback != null ) {
+				addAffixCallback(affixObject);
+			}
+    }
+
+    $(document).ready(function(){
+        var flag = true;
+        $("#middle").click(function(){
+            if(flag == true) {
+                $("#left").hide();
+                $("#middle").css('left', '0');
+                $("#picVer").attr('src','./assets/zuo.png');
+                $("#center").css('width', '99.1%');
+                var zoomOut = $(".imglykit-zoom-out");
+                zoomOut.click();
+                flag = false;
+            }else{
+                $("#left").show();
+                $("#picVer").attr('src','./assets/you.png');
+                $("#middle").css('left', '9.2%');
+                $("#center").css('width', '90%');
+                zoomOut = $(".imglykit-zoom-out");
+                zoomOut.click();
+                flag = true;
+            }
+        });
+        var flag1 = true;
+        $("#slideDown").click(function(){
+            if(flag1 == true) {
+                var zoomOut = $(".imglykit-zoom-in");
+                console.log(zoomOut);
+                $(".image").hide();
+                $("#centerDown").hide();
+                $("#shang").attr('src',"./assets/xia.png");
+                $("#slideDown").css('margin-bottom','0');
+                $("#centerContainer").css('height', '97.6%');
+                //触发点击事件，使图片充满编辑窗口
+
+                zoomOut.click();
+                flag1 = false;
+            }else{
+                $(".image").show();
+                $("#centerDown").show();
+                $("#shang").attr('src','./assets/shang.png');
+                $("#slideDown").css('margin-bottom','1px');
+                $("#centerContainer").css('height', '82%');
+                zoomOut = $(".imglykit-zoom-out");
+                zoomOut.click();
+                flag1 = true;
+            }
+        })
+    });
+
+</script>
+    <script src="js/popwin.js"></script>
+</body>
+</html>

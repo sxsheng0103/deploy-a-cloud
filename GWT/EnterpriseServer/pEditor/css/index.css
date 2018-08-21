@@ -1,0 +1,28 @@
+/*html { overflow: scroll; }*/
+
+#center{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    float: right;
+    position: absolute;
+}
+#centerContainer{
+    border-style:solid;
+    border-width:1px;
+    border-color: #474a5a;
+}
+#slideDown{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background: #474a5a;
+    border-style:solid;
+    border-width:1px;
+    border-color: #474a5a;
+}
+#centerDown{
+    border-style:solid;
+    border-width:1px;
+    border-color: #474a5a;
+}

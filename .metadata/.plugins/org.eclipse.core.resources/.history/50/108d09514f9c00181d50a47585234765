@@ -1,0 +1,5 @@
+package com.kedacom.demo.thriftDemo;
+
+public class HelloServerDemo {
+
+}

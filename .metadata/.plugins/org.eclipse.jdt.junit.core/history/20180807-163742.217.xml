@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestSender" project="wxpay" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="test.java.TestSender" time="1.411">
+    <testcase name="doRefund" classname="test.java.TestSender" time="0.481"/>
+    <testcase name="doRefundQuery" classname="test.java.TestSender" time="0.811"/>
+    <testcase name="doOrderQuery" classname="test.java.TestSender" time="0.041"/>
+    <testcase name="doUnifiedOrder" classname="test.java.TestSender" time="0.04"/>
+    <testcase name="doOrderClose" classname="test.java.TestSender" time="0.038"/>
+  </testsuite>
+</testrun>

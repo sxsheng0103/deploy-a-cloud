@@ -1,0 +1,490 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10,IE=edge"> -->
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=8"> -->
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=9">
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>江苏油田业财融合管理平台</title>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+
+ <!--
+   <style type="text/css">
+   	@keyframes myCircle{
+	0%   {transform:rotate(0deg);}
+	100% {transform:rotate(360deg);}
+	}
+   </style>   去掉转的圈圈-->
+
+  <!-- <script src="js/excel/jquery-1.11.2.min.js" type="text/javascript"></script>-->
+   <script type="text/javascript" src="js/orgchart/js/jquery-3.1.0.min.js"></script>
+
+<!--bpmn 2.0 js-->
+<script src="js/d3/d3.js"></script>
+<link rel="stylesheet" href="js/bpmn-js/assets/diagram-js.css">
+<link rel="stylesheet" href="js/bpmn-js/assets/bpmn-font/css/bpmn-embedded.css">
+<script src="js/bpmn-js/bpmn-viewer.js"></script>
+<script src="js/bpmn-js/bpmn-modeler.js"></script>
+<script src="js/bpmn-js/bpmn-navigated-viewer.js"></script>
+<!--bpmn-->
+
+<!-- 自定义 -->
+<script src="js/custom.js"></script>
+<!-- Zhangjiliang-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <style>
+.LockRow /*固定行的样式*/
+{
+    position: relative;
+    top:0;
+    z-index:2;
+    border: 1px solid #bbc8c8;
+}
+.LockCell /*固定列的样式*/
+{
+    position: relative;
+    left:0;
+    z-index:2;
+    border: 1px solid #bbc8c8;
+}
+.LockCross /*行列交叉处样式*/
+{
+    z-index:3;
+    border: 1px solid #bbc8c8;
+}
+.divBoxing /*外出div样式*/
+{
+    clear:both;
+    overflow-x: scroll;
+    position:relative;
+}
+.tbLock /*设置单元格间隙的样式*/
+{
+    border-collapse:collapse;
+}
+.lockRowCss{
+    background-color: white;
+}
+.lockRowBg
+{
+    background-image:url('/Styles/images/png_back.png');
+    background-position:0 -960px;
+    background-repeat:repeat-x;
+    line-height:24px;
+    border:1px solid #bbc8c8
+}
+.lockColumnBg {
+    background-color: white;
+    border-right: 1px solid #bbc8c8 !important;
+    border-left:1px solid #bbc8c8 !important;
+}
+</style>
+
+<!-- -->
+
+  <!--bpmn 2.0 js -->
+<!-- <script src="js/d3/d3.js"></script>
+<link rel="stylesheet" href="js/bpmn-js/assets/diagram-js.css">
+<link rel="stylesheet" href="js/bpmn-js/assets/bpmn-font/css/bpmn-embedded.css">
+<link rel="stylesheet" href="js/login.css">
+
+<link href="css/CssButton.css"  rel="stylesheet" type="text/css"/>
+<link href="js/excel/jquery.wijmo.wijspread.3.20143.15.css" rel="stylesheet" type="text/css" />
+
+<script src="js/bpmn-js/bpmn-viewer.js"></script>
+<script src="js/bpmn-js/bpmn-modeler.js"></script>
+<script src="js/bpmn-js/bpmn-navigated-viewer.js"></script>-->	
+	<!--bpmn-->
+
+   <script type="text/javascript" 	src="js/ckeditor/ckeditor.js" ></script>
+  
+   
+ <!--  <script type="text/javascript" src="js/v3min.js" language="JavaScript"></script>  -->
+   <script type="text/javascript" src="js/liquidFillGauge/liquidFillGauge.js" language="JavaScript"></script>
+   <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+   </style>
+   
+   
+	<!--newtable-->  
+
+	<!--<script type="text/javascript" language="javascript" src="js/newtable/examples/resources/demo.js"></script>-->
+ 
+	<!-- jQuery   -->
+<!--	<script type="text/javascript" charset="utf8" src="media/js/jquery.js"></script>-->
+	<!-- 二维码   -->
+	<script type="text/javascript" charset="utf8" src="js/qrcode/qrcode.min.js"></script>
+	
+	<!--<script src="js/echarts/echarts-all.js" type="text/javascript"></script>-->
+	<!-- echarts图表组件 --> 
+	<script src="js/echarts/echarts_3.3.2.js" type="text/javascript"></script>
+ 
+
+	<script src="js/player/flowplayer-3.2.13.min.js" type="text/javascript"></script>
+	
+	<!-- start Ck -->
+	<!--<script type="text/javascript" src="js/flexpaper/jquery.min.js"></script>-->
+	<!-- <link rel="stylesheet" type="text/css" href="js/flexpaper/flexpaper_flat.css" /> -->
+	<script type="text/javascript" src="js/flexpaper/jquery.extensions.min.js"></script>
+	<script type="text/javascript" src="js/flexpaper/flexpaper.js"></script>
+	<script type="text/javascript" src="js/flexpaper/flexpaper_handlers.js"></script>
+<!-- end CK -->
+	
+	<!--Excel使用 如果用不到Excel这个组件，可以注释掉，否则影响生产环境的加载效率--> 
+	<!--<script src="js/excel/jquery-1.11.2.min.js" type="text/javascript"></script>-->
+	<script src="js/excel/gcspread.sheets.all.9.40.20161.0.min.js" type="text/javascript"></script>
+	<link  href="js/excel/gcspread.sheets.9.40.20161.0.css" rel="stylesheet" type="text/css">
+	<!-- end Excel使用 -->
+	
+	<link href="css/explore.css" rel="stylesheet" type="text/css" />
+	
+	<script src="js/OpenLayers.js"></script>
+	<script src="js/OpenStreetMap.js"></script> 
+	 
+	<script src="js/amcharts/amcharts.js" type="text/javascript"></script>
+	<script src="js/amcharts/serial.js" type="text/javascript"></script>
+	<script src="js/amcharts/funnel.js" type="text/javascript"></script>
+	<script src="js/amcharts/themes/light.js" type="text/javascript"></script>
+	
+	
+	<!-- 资产相关附件上传功能-->
+  
+	<script src="js/layui/layui.js"></script>
+	<script src="affixHtml/affix.js"></script>
+
+
+	<!-- 日历组件 -->
+	<link href="GWTHomeAppHCM/fullcalendar.css" rel="stylesheet">
+	<link href="GWTHomeAppHCM/fullcalendar.print.css" rel="stylesheet" media="print">
+	<script src="GWTHomeAppHCM/lib/moment.min.js"></script>
+	<!--<script src="GWTHomeAppHCM/lib/jquery.min.js"></script>-->
+	<script src="GWTHomeAppHCM/fullcalendar.js"></script>
+	<script src="GWTHomeAppHCM/zh-cn.js"></script>
+
+	<link href="js/yfiles.css" rel="stylesheet" type="text/css" />
+
+	<!-- 放到粘贴板 -->
+	<script src="js/clipboard/clipboard.min.js" type="text/javascript"></script>
+
+	<!-- 杜邦分析图 -->
+	<link rel="stylesheet" href="js/orgchart/css/fontawesome/css/font-awesome.min.css"/>
+	<link href="js/orgchart/css/jquery.orgchart.css" rel="stylesheet" type="text/css"/>
+	
+	<!-- IE浏览器导出需要引入es6-promise.auto.min.js -->
+    <script type="text/javascript" src="js/orgchart/js/es6-promise.auto.min.js"></script>
+	<script type="text/javascript" src="js/orgchart/js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/orgchart/js/jspdf.debug.js"></script>
+    <script type="text/javascript" src="js/orgchart/js/jquery.orgchart.js"></script>
+
+
+	<script src="js/require.js" type="text/javascript"></script>
+	<script src="js/yfiles/es5-shim.js" type="text/javascript"></script>
+    <script src="js/debug.js" type="text/javascript"></script>
+	
+	<style type="text/css">
+	.customPortal .com-efounder-customneptune-client-base-panel-Css3HeaderAppearance-Css3HeaderStyle-headerText {
+		color: black;
+	}
+		
+	.homePageUserInfo_changeHeaderIcon{
+		display: inline-block;
+    	font-size: 12px;
+		font-family: "Microsoft YaHei",SimSun, Arial,Helvetica,sans-serif;
+    	color: #000;
+    	text-align: center;
+    	text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+    	vertical-align: middle;
+    	cursor: pointer;
+		
+		background-color: buttonface;
+		border-width: 1px;
+		border-color: buttonface;
+		padding-bottom:2px;
+		
+    	-webkit-border-radius: 1px;
+    	-moz-border-radius: 1px;
+    	border-radius: 1px;
+    	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+    	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	}
+
+	.homePageUserInfo_okBtn{
+	}
+		
+	.homePageUserInfo_cancelBtn{
+	}	
+	</style>
+	
+	
+	
+	
+	<script type="text/javascript" language="javascript"  src="GWTHomeAppHCM/GWTHomeAppHCM.nocache.js"></script>
+
+    <script type="text/javascript">
+    	var flg_login = true;
+  	function getHeaderIconUrl(){
+			var urname=$("#homePageLoginUserName").val();
+			// window.document.getElementById("homePageLoginButton").firstElementChild.onmousedown(); 
+			// var pwd=$("#homePageLoginPassword").val();//background-color: buttonface;
+			
+			var DBNO = "ZYYT_DB01";
+			var DataBaseName = "ZYYT_DB01";
+			var rootPath = getBaseURL();
+			$.ajax({  
+				url:rootPath+'CtrlService?action=homePageHeaderIcon',  //��̨ctrlService
+				type: "post" ,
+				data:{F_ZGBH:urname,
+					  F_COLID:'IMG_ICON',
+					  F_WHEID:'F_ZGBH',
+					  DBNO:DBNO,
+					  DataBaseName:DataBaseName,
+					  PO:"F_ZGBH="+urname+";" +
+						"F_COLID=IMG_ICON;F_WHEID=F_ZGBH;DBNO="+DBNO+";DataBaseName="+DataBaseName
+					  },  
+				error:function(){  
+				   alert("login failed!");  
+				},  
+				beforeSend: function(){
+
+				},
+				success:function(data){
+					var dataObj = $.parseJSON(data);
+					var img_icon = dataObj.url;
+					// console.log(img_icon);
+					if(img_icon != "" && img_icon != null){
+						window.document.getElementById("homePageLoginHeader").src = img_icon;
+					}
+				}
+			 });
+		}
+		/**
+		 * 
+		 */
+
+		function beforeInitApplication() {
+			
+			window.setObject("Product", "GWTHomePageDef");
+			window.setObject("SYS_ID", "OSPDef");
+
+			window.setObject("DBNO", "ZYYT_DB01");//ORDB			
+			window.setObject("DataBaseName", "ZYYT_DB01");
+			window.setObject("LoginCheckType", "JSCWLogin");
+
+			// 是否为调试模式
+			window.putEAIEnv("debug", "true");
+			//true的时候错误信息以弹窗的形式出现，false的时候错误信息打印到浏览器控制台
+			
+			/*多语言需要配置
+			// 刷新免登陆时多语言需要
+			var international = localStorage.getItem("International");
+			var country = localStorage.getItem("Country");
+			if( international != null && country != null ) {
+				// 给po设置本地缓存中的语言
+				window.setObject("International", international);
+				window.setObject("Country", country);
+			}else{
+				// po默认的语言
+				window.setObject("International", "zh");//en
+				window.setObject("Country", "CN");//US
+			}*/
+		}
+		
+		/**
+		 * 
+		 */
+		function afterInitApplication() {
+			
+		}
+
+		/**
+         * 处理网页关闭后的操作
+         */
+        window.onunload = function() {
+            //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+            var curWwwPath = window.document.location.href;
+            //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+            var pathName = window.document.location.pathname;
+            var pos=curWwwPath.indexOf(pathName);
+            //获取主机地址，如： http://localhost:8083
+            var localhostPaht = curWwwPath.substring(0,pos);
+            //获取带"/"的项目名，如：/uimcardprj
+            var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+            // 项目url，如：
+            var productPath = localhostPaht+projectName;
+            var logoutService = productPath + "/CtrlService";
+
+            var dataBaseName = window.getObject("DataBaseName");
+            var dbno = window.getObject("DBNO");
+            $.get(logoutService,
+                    { action: "webGenerCtrlService", ObjectName: "SecurityObject", MethodName: "LogoffProduct", DataBaseName: dataBaseName, DBNO: dbno },
+                    function (data) {}
+            );
+        }
+    	/**
+	 * 3.自定义的登录界面调用此方法执行登录
+	 */
+	function login() {
+		document.getElementById("btn1").innerText = "正在登录";
+// 		var userName = eval(document.getElementById('name1')).value;
+ 		var userName = eval(document.getElementById('name1')).value.trim();
+		var userPass = eval(document.getElementById('mima1')).value;
+
+		// 用户名不能为空
+		if (userName == null || userName == "") {
+// 			alert("用户名不能为空!");
+            window.parent.showAlert("用户名不能为空","系统提示","1","","");
+			flg_login = true;
+			document.getElementById("btn1").innerText = "登录";
+			return;
+		}
+		//-------------------新增开始：20160120 15:34-------------------
+		var otherParam = window.StubObject();
+		window.setObject("PortalSelf", "1"); 
+		window.setObject("HOME_ID", "GWTHomePageDef");	
+		otherParam.setObject("LoginCheckType", "JSCWLogin");
+		//window.loginGWT("用户名", "密码", 其他参数对象);
+		//-------------------新增结束-------------------
+		window.loginHomeApp(userName, userPass, otherParam);
+		
+		//window.loginGWT(userName, userPass);
+	}
+
+	/**
+	 * 4.登录成功之后调用
+	 */
+	function onLoginSuccess() {
+		// gwt div div
+		flg_login = false;
+		<!--赵振洋 session-->
+		var date=new Date(); 
+		date.setTime(date.getTime()+300*600*10000); //设置date为当前时间+30分
+		document.cookie="key=value; expires="+date.toGMTString(); //将date赋值给expires
+        // gwt div div
+		var userName = eval(document.getElementById('name1')).value;
+     	var userPass = eval(document.getElementById('mima1')).value;
+		document.cookie="name="+userName+"; expires="+date.toGMTString();
+		if(document.getElementById("internet").checked) {
+			document.cookie="pass="+userPass+"; expires="+date.toGMTString();
+		}else{
+			userPass="";
+			document.cookie="pass="+userPass+"; expires="+date.toGMTString();
+		}
+		maxGwtApplication();
+		getUserObject();
+	}
+	function maxGwtApplication() {
+		document.getElementById("form20180319").style.display = "none";
+		document.getElementById("down_txt").style.display = "none";
+		//alert(radio);
+		var radio = document.getElementsByName("radio");
+		for (i = 0; i < radio.length; i++) {
+			if (radio[i].checked) {
+				if (radio[i].value == "option1") {
+					document.getElementById("gwt_esp").style.display = "";
+				} else if (radio[i].value == "option2") {
+					if (window.getObject("PortalSelf") == "0") {
+						document.getElementById("gwt_esp").style.display = "";
+					} else {
+						document.getElementById("gwt_esp").style.display = "none";
+					}
+				}
+				document.getElementById("gwt_esp").style.display = "";
+				document.getElementById("gwt_esp").style.width = "100%";
+				document.getElementById("gwt_esp").style.height = "100%";
+			}
+		}
+		//
+		//document.getElementById("login_Logo").style.display = "none";
+	}
+	
+		function  afterloginSuccess(){
+			getUserObject();
+		}
+
+		function getUserObject() {
+				var rootPath = getBaseURL();
+				var account = "ZYYT_DB01";
+				var mana = "";
+				var uername= $("#name1").val();
+				$.ajax({
+					type: "post",
+					url: rootPath + 'CtrlService?action=GetUserInfoService',
+					dataType: 'json',
+					data: {
+						action:"GetUserInfoService",
+						urname: $("#name1").val(),
+						DBNO: account,
+						DataBaseName: account
+					},
+					success: function(data) {
+						console.log(data+"************");
+						for(var key in data[0]) {
+							window.setObject(key, data[0][key]);
+						}
+					},
+					error: function(data) {
+						console.log("%%%%%%%%%%%%************");
+						window.location.href = rootPath + "/index.html";
+						return;
+					}
+				});
+			}   		
+	/**
+	 * 5.登录失败之后调用
+	 */
+	function onLoginFail(errorMessage) {
+		var loginButton = document.getElementById("btn1").innerHTML = "登录";
+		flg_login = true;
+        window.parent.showAlert(errorMessage,"系统提示","1","","");
+// 		alert(errorMessage);background-color:#aaaaaa
+	}
+	function enterKeydown(event) {
+		if (flg_login && event.keyCode == 13) {
+			login();
+		}
+	}
+	document.onkeydown = enterKeydown;
+    </script>
+</head>
+
+<body  style="background: #4796da">
+<div class="form20180319" id="form20180319" style="background: #4796da;">
+  <div class="logo" style=" text-align:left;"><img src="images/logozi.png" width="750" height="100"  alt=""/></div>
+  <div class="login_left" style="background-color: #4796da;"><img src="images/left01.png" width="813" height="411"  alt=""/></div>
+  <div class="login_right" style="background-color: #4796da;">
+  
+ 
+  <div class="login_top">用户登录</div>
+  <ul class="USList">
+    <li>
+      <input id="name1" type="text"  value="" placeholder="请输入用户名"  class="inputtxt1"/>
+    </li>
+    <li>
+      <input id="mima1" type="password"  value="" placeholder="请输入密码" class="inputtxt2"/>
+    </li>
+    <li style="text-align:left; padding-left:35px;">
+      <input type="checkbox" name="favorite" id="internet" value="记住密码" class="jq22" >
+      <label for="internet" style="cursor:pointer; vertical-align:top; color:#FFF;" >记住密码</label> 
+    </li>
+    <li style=" clear:both; text-align:left; padding-left:22px;">
+      <button id="btn1" class="button button--isi" onClick="javascript:login();"><span>登 录</span></button>
+    </li>
+  </ul>
+  
+  </div>
+</div>
+<div class="down_txt" id="down_txt">
+  <div><span style="padding-left:15px;"> Copyright &copy; 2018</span><span style="padding-left:15px;">中国石化江苏油田   All Reserved</span></div>
+  <div><span style="padding-left:15px;">技术支持：普联软件股份有限公司</span><span style="padding-left:15px;">运维电话：0514-8888***989</span><span style="padding-left:15px;">QQ群：8989***8989</span> </div>
+</div>
+<!--记住密码用到的ｊｓ --> 
+<!--<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="js/jquery.cform.min.js"></script> 
+--> 
+<div id="gwt_esp" style="width:100%;height:100%;display:none;"></div>
+</body>
+</html>

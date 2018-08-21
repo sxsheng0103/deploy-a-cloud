@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <title>FlexPaper AdaptiveUI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
+    <style type="text/css" media="screen">
+        html, body	{ height:100%; }
+        body { margin:0; padding:0; overflow:auto; }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/flexpaper.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.extensions.min.js"></script>
+    <script type="text/javascript" src="js/flexpaper.js"></script>
+    <script type="text/javascript" src="js/flexpaper_handlers.js"></script>
+</head>
+
+<div id="documentViewer" class="flexpaper_viewer" style="width:100%;height:100%"></div>
+
+	<script type="text/javascript">
+
+
+			//是否显示toolbar
+			function isShowToolbar(){
+				 		var url = location.search;
+				 		var toolbarUrl = url.split("isShowToolbar")[1];
+				 		var indexOfUrl = toolbarUrl.indexOf("url=");
+				 		var showToolbar = toolbarUrl.substring(1,indexOfUrl);
+				 		return showToolbar;
+			}
+			
+			function getUrl(){  
+					var url = location.search; 
+					var index=url.indexOf("CtrlService");
+					if (index != -1) {
+						//相对路径 以CtrlService开头的
+						if(url.substring(0,11)=='CtrlService'){
+							var pdfURL = url.substring(index);
+							var newPdfURL = "../"+pdfURL;
+							return newPdfURL;
+						}else{
+							//绝对路径 以CtrlService的形式传入的url
+							var pdfUrl = url.split("url=")[1];
+							return pdfUrl;
+						}
+					}else {
+						var pUrl = url.split("?")[1]; 
+						var pdfUrl = pUrl.split("url=")[1];
+						return pdfUrl;
+					}
+			}; 
+			 
+		 
+			 
+			 
+  		jQuery.get((!window.isTouchScreen)?'UI_flexpaper_desktop.html':'UI_flexpaper_mobile.html',
+          function(toolbarData) {
+              jQuery('#documentViewer').FlexPaperViewer(
+                      { config : {
+
+                          PDFFile                 : getUrl(),
+ 													key : "@470002ae57bea452bb6$c6304fda870e28a3820",
+                          Scale                   : 1,
+                          ZoomTransition          : 'easeOut',
+                          ZoomTime                : 0.5,
+                          ZoomInterval            : 0.2,
+                          FitPageOnLoad           : false,
+                          FitWidthOnLoad          : false,
+                          FullScreenAsMaxWindow   : true,
+                          ProgressiveLoading      : false,
+                          MinZoomSize             : 0.2,
+                          MaxZoomSize             : 5,
+                          SearchMatchAll          : false,
+														
+													Toolbar                 : (isShowToolbar()=='true'?toolbarData:''),
+                          BottomToolbar           : '',
+                          InitViewMode            : 'Portrait',
+                          RenderingOrder 					: 'html5,html',
+                          StartAtPage             : '',
+													
+													AnnotationToolsVisible  :false,
+                          ViewModeToolsVisible    : true,
+                          ZoomToolsVisible        : true,
+                          NavToolsVisible         : true,
+                          CursorToolsVisible      : true,
+                          SearchToolsVisible      : false,
+
+                          localeChain             : 'zh_CN'
+                      }}
+              );
+          });
+
+</script>
+</html>

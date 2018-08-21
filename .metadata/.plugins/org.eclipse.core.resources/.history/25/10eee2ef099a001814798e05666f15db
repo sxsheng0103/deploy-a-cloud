@@ -1,0 +1,42 @@
+package com.codescan;
+
+import com.efounder.eai.EAI;
+import com.efounder.gwt.core.client.eai.ICallback;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.Anchor;
+
+public class testscan {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Anchor scanLogin = new Anchor();
+
+		scanLogin.setText("扫描二维码登录");
+
+		scanLogin.addClickHandler(new ClickHandler() {
+
+		@Override
+
+		public void onClick(ClickEvent event) {
+
+		if ( isScanLoginState ) return;
+
+		cardContainer.setActiveWidget(scanLoginBox);
+
+		isScanLoginState = true;
+
+		JParamObject po = JParamObject.Create();
+
+		// 可以自定义系统产品名称，移动端获取到并显示
+
+		po.setParam("ProductName", "OSP企业应用");
+
+		EAI.DAL.IOM("QRCodeLogin", "getQRCodeUUID", po, getQRCodeCallback, null);
+
+		}
+
+		});
+	}
+	
+	
+}

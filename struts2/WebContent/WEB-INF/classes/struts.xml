@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+<!--在struts2-core-2.3.16.jar中有strust-defalut.xml.我们需要继承它。  -->
+    <package name="default" extends="struts-default">
+        <action name="login" class="com.cy.action.LoginAction">
+            <result name="success">/jsp/success.jsp</result> 
+             <result name="error">/jsp/error.jsp</result>      
+        </action>
+    </package>
+</struts>
+<!--在action标签中定义了name和class。name属性对应的是用户URL请求中的action名，
+	class属性是处理请求的实现类（注意：要包含完整路径）。
+	result标签定义逻辑视图和物理视图之间的映射，在我们的Action中，
+	如果返回的字符串是"success”则由对应的success.jsp页面进行处理；
+	如果返回的字符串是"error”则由error.jsp页面进行处理。  -->

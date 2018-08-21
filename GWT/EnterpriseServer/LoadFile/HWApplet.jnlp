@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp href="HWApplet.jnlp">
+
+	<information>
+    <title>NASA World Wind Java</title>
+    <vendor>NASA Ames Research Center</vendor>
+    <homepage href="http://worldwind.arc.nasa.gov/java/"/>
+    <description>NASA World Wind Java</description>
+    <description kind="short">NASA's World Wind Java Earth viewer embedded as an applet on the web page.</description>
+    <offline-allowed/>
+  </information>
+ <resources>
+    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se" initial-heap-size="32m" max-heap-size="512m" />
+	<jar href="ESPOLEService.jar" main="false" download="eager" />
+	<jar href="swt.jar" main="false" download="eager" />
+  </resources>
+	<applet-desc name="WWJ Applet" main-class="wordApplet" width="100" height="100"/>
+	<security>
+		<all-permissions/>
+	</security>
+</jnlp>

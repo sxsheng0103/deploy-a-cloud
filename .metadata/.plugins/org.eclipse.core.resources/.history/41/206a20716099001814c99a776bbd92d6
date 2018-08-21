@@ -1,0 +1,86 @@
+package com.cache;
+
+public class EntityCache {
+    /**
+     * 保存的数据
+     */
+    private  Object datas;
+ 
+    /**
+     * 设置数据失效时间,为0表示永不失效
+     */
+    private  long timeOut;
+ 
+    /**
+     * 最后刷新时间
+     */
+    private  long lastRefeshTime;
+ 
+    public EntityCache(Object datas, long timeOut, long lastRefeshTime) {
+        this.datas = datas;
+        this.timeOut = timeOut;
+        this.lastRefeshTime = lastRefeshTime;
+    }
+    public Object getDatas() {
+        return datas;
+    }
+    public void setDatas(Object datas) {
+        this.datas = datas;
+    }
+    public long getTimeOut() {
+        return timeOut;
+    }
+    public void setTimeOut(long timeOut) {
+        this.timeOut = timeOut;
+    }
+    public long getLastRefeshTime() {
+        return lastRefeshTime;
+    }
+    public void setLastRefeshTime(long lastRefeshTime) {
+        this.lastRefeshTime = lastRefeshTime;
+    }
+ 
+ 
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42

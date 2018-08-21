@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.itcast.mybatis.domain.UserPo">
+    <sql id="cols">
+        id,name,age,address
+    </sql>
+    <sql id="ucols">
+        name=#{name},age=#{age},address=#{address}
+    </sql>
+
+    <!-- 查询所有记录 -->
+    <select id="listAll" resultType="aliasesUser">
+        select <include refid="cols"/> from user_c
+    </select>
+    
+    <!-- 按条件查询 -->
+    <select id="find" parameterType="aliasesUser" resultType="aliasesUser">
+        select * from user_c 
+        <where>
+        <if test="name!=null">
+            and name like "%"#{name}"%"
+        </if>
+        <if test="age!=null">
+            and age=#{age}
+        </if>
+        </where>
+    </select>
+    
+    <!-- 查询一个用户 -->
+    <select id="get" parameterType="string" resultType="aliasesUser">
+        select <include refid="cols"/> from user_c where id=#{id}
+    </select>
+    
+    <!-- 新增 -->
+    <insert id="create" parameterType="aliasesUser">
+        insert into user_c (id,name,age,address) values(#{id},#{name},#{age},#{address})
+    </insert>
+    
+    <!-- 修改 -->
+    <update id="update" parameterType="aliasesUser">
+        update user_c
+         <set>
+             <if test="name!=null">
+                 name=#{name},
+             </if>
+             <if test="age!=null">
+                 age=#{age},
+             </if>
+             <if test="address!=null">
+                 address=#{address},
+             </if>
+         </set>
+         
+        where id=#{id}
+    </update>
+    
+    <!-- 删除 -->
+    <delete id="deleteOne" parameterType="string">
+        delete from user_c where id=#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,8 @@
+package com.rmi.client;
+
+public class clasB {
+private String name = "zhanghuan";
+	String getName() {
+		return name;
+		}
+	}

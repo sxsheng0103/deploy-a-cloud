@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+   <typeAliases>
+        <typeAlias type="cn.itcast.mybatis.domain.UserPo" alias="aliasesUser"></typeAlias>
+    </typeAliases>
+ <environments default="development">
+        
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+                <property name="username" value="testtest"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+<!--         产品    可用于多个配置的 -->
+        <!-- <environment id="product">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatisdb?characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="friends"/>
+            </dataSource>
+        </environment> -->
+    </environments>
+    <mappers>
+        <mapper resource="cn/itcast/mybatis/domain/UserPo.xml"/>
+    </mappers>
+</configuration>

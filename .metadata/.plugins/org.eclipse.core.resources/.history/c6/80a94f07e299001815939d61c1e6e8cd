@@ -1,0 +1,28 @@
+package com.cache;
+
+import java.util.logging.Logger;
+
+public class CacheListener{
+    Logger logger = Logger.getLogger("cacheLog");
+    private CacheManagerImpl cacheManagerImpl;
+    public CacheListener(CacheManagerImpl cacheManagerImpl) {
+        this.cacheManagerImpl = cacheManagerImpl;
+    }
+ 
+    public void startListen() {
+        new Thread(){
+            public void run() {
+                while (true) {
+                    for(String key : cacheManagerImpl.getAllKeys()) {
+                        if (cacheManagerImpl.isTimeOut(key)) {
+                         cacheManagerImpl.clearByKey(key);
+                         System.out.println(key);
+                         logger.info(key + "    listener»º´æ±»Çå³ý");
+                     }
+                    }
+                }
+            }  
+        }.start();
+ 
+    }
+}

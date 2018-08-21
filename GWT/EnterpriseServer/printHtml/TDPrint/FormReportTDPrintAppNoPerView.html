@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>直接打印</title>
+    <script type="text/javascript" src="../swfobject.js"></script>
+	<script type="text/javascript" src="../common.js"></script>
+	<script type="text/javascript" src="../jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+        //一下脚本用于动态创建swf节点
+        var swfVersionStr = "14.0.0";
+        var xiSwfUrlStr = "playerProductInstall.swf";
+        var flashvars = {};
+        var params = {};
+        params.quality = "high";
+        //params.bgcolor = "#ffffff";//去掉背景色
+        params.allowscriptaccess = "sameDomain";
+        params.allowScriptAccess = "always";
+        params.allowfullscreen = "true";
+        var attributes = {};
+        attributes.id = "FormReportTDPrintApp";
+        attributes.name = "FormReportTDPrintApp";
+        attributes.align = "middle";
+        swfobject.embedSWF("FormReportTDPrintApp.swf", "flashContent", "10px", "10px", swfVersionStr, xiSwfUrlStr, flashvars, params, attributes);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            onPageLoad();
+        });
+ 
+    </script>
+</head>
+ 
+<body>
+ 
+<div style=" text-align:center"><button type="button" hight="30" onclick="loadTDReport()">直接打印</button> </div>
+ 
+<div id="flashContent" style="visibility: hidden">
+ 
+</div>
+</body>
+</html>

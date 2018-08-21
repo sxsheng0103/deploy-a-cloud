@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.jms.DeliveryMode"/>
+<fullyQualifiedTypeName name="javax.jms.MessageListener"/>
+<fullyQualifiedTypeName name="javax.jms.JMSException"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.SpringBootApplication"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
+<fullyQualifiedTypeName name="org.springframework.boot.SpringApplication"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.EnableEurekaClient"/>
+<fullyQualifiedTypeName name="com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand"/>
+<fullyQualifiedTypeName name="com.springcloud.test.HelloService"/>
+<fullyQualifiedTypeName name="com.sun.grizzly.util.LoggerUtils"/>
+<fullyQualifiedTypeName name="com.sun.jersey.api.client.ClientResponse"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Context"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="javax.xml.soap.SOAPMessage"/>
+<fullyQualifiedTypeName name="javax.xml.soap.MessageFactory"/>
+<fullyQualifiedTypeName name="javax.xml.transform.stream.StreamSource"/>
+<fullyQualifiedTypeName name="javax.xml.soap.SOAPPart"/>
+<fullyQualifiedTypeName name="javax.xml.soap.MimeHeaders"/>
+<fullyQualifiedTypeName name="javax.xml.soap.SOAPConnection"/>
+<fullyQualifiedTypeName name="javax.xml.soap.SOAPConnectionFactory"/>
+<fullyQualifiedTypeName name="cn.com.tt.rmiserver.stub.UserManagerInterface"/>
+<fullyQualifiedTypeName name="com.rmi.test.imp.UserManagerImp"/>
+<fullyQualifiedTypeName name="com.rmi.test.UserManagerInterface"/>
+<fullyQualifiedTypeName name="com.rmi.test.Account"/>
+<fullyQualifiedTypeName name="com.rmi.server.UserManagerInterface"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ExecutorService"/>
+<fullyQualifiedTypeName name="java.util.concurrent.Executors"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ConcurrentHashMap"/>
+</qualifiedTypeNameHistroy>

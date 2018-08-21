@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Tue Aug 07 10:03:46 CST 2018
+org.eclipse.jst.jee.server\:/binary\:E\:\\SIMS\\SIMS\\WebContent\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar=D\:\\PROJECT\\apache-tomcat-8.0.52\\webapps\\SIMS1.1\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar
+org.eclipse.jst.jee.server\:SIMS1.1=D\:\\PROJECT\\apache-tomcat-8.0.52\\webapps\\SIMS1.1

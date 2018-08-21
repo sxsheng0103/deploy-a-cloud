@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>JerseyRESTfulWebService</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>  
+    <servlet-name>Jersey REST Service</servlet-name>  
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>  
+    <init-param>  
+      <param-name>com.sun.jersey.config.property.packages</param-name>  
+      <param-value>com.eviac.blog.restws</param-value>  
+    </init-param>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Jersey REST Service</servlet-name>  
+    <url-pattern>/rest/*</url-pattern>  
+  </servlet-mapping>
+  <!-- 发布资源的方式之一，Jersey与spring整合，WebService配置 -->
+	<servlet>
+	<span style="white-space:pre">	</span><servlet-name>JAX-RS REST Servlet</servlet-name>  
+	<span style="white-space:pre">	</span><servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>  
+	<span style="white-space:pre">	</span><!-- 服务端  webservice类的包路径 -->
+	<span style="white-space:pre">	</span><init-param>
+	<span style="white-space:pre">		</span><param-name>com.sun.jersey.config.property.packages</param-name>
+	<span style="white-space:pre">		</span><param-value>cn.hydom.ztc.ws.impl</param-value>
+	<span style="white-space:pre">	</span></init-param>
+	<span style="white-space:pre">	</span><load-on-startup>1</load-on-startup>
+	</servlet>  
+	<servlet-mapping>  
+	<span style="white-space:pre">	</span><servlet-name>JAX-RS REST Servlet</servlet-name>  
+	<span style="white-space:pre">	</span><url-pattern>/services/*</url-pattern>  
+	</servlet-mapping>
+  
+</web-app>

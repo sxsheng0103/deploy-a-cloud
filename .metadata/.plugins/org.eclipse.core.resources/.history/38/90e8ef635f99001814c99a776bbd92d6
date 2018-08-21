@@ -1,0 +1,9 @@
+package com.rmi.client;
+
+public class clasB {
+private static String name = "zhanghuan";
+	String getName() {
+		System.out.println(name);
+		return name;
+		}
+	}

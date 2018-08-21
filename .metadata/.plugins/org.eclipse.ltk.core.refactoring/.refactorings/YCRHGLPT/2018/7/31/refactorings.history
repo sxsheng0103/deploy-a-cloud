@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.passwordvavify.java&apos; to &apos;JCommonFunction.java&apos;&#x0D;&#x0A;- Original project: &apos;YCRHGLPT&apos;&#x0D;&#x0A;- Original element: &apos;com.passwordvavify.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.JCommonFunction.java&apos;" description="Rename compilation unit &apos;passwordvavify.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;com{passwordvavify.java" name="JCommonFunction.java" references="false" stamp="1532922166059" version="1.0"/>
+</session>

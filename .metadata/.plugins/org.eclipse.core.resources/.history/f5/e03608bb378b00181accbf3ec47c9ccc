@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package>
+  <RootNode>
+	<node id="FGSYS" caption="分公司预算"/>
+	<node id="KTJYS" caption="勘探局预算"/>
+  </RootNode>
+	
+  <FGSYS>
+  	<node id="FGS_YSGL" caption="年度预算"/>
+	<node id="FGS_YDYS" caption="月度预算"/>
+	<node id="FGS_FYTBGL" caption="费用同步"/>
+	<node id="FGS_FZGL" caption="辅助管理"/>
+	<node id="FGS_TJCX" caption="统计查询"/>
+	<node id="FGS_JCSJ" caption="基础数据"/>
+  </FGSYS>
+  
+  <KTJYS>
+  	<node id="KTJ_YSGL" caption="年度预算"/>
+	<node id="KTJ_YDYS" caption="月度预算"/>
+	<node id="KTJ_YSFX" caption="预算分析"/>
+	<node id="KTJ_FYTBGL" caption="费用同步"/>
+	<node id="KTJ_FZGL" caption="辅助管理"/>
+	<node id="KTJ_TJCX" caption="统计查询"/>
+	<node id="KTJ_JCSJ" caption="基础数据"/>
+  </KTJYS>
+  
+  <FGS_YSGL>
+  	<node id="NDYS_JGYSFYFT" caption="年度预算分摊" contentView="JYPT_YSGL_JGYSFYFT.form1" forms="JYPT_YSGL_JGYSFYFT" openType="NDYSFT" showLeftSideView="0" hideMenuView="1" openNum="-1" GNBH="YS_FGS_0005"/>
+	<node id="JSYT_YSGL_NDXQYS" caption="年度需求预算编制" contentView="JYPT_YSGL_YSBZ_NEW.form1" forms="JYPT_YSGL_YSBZ_NEW" openType="NDXQYS"  hideMenuView="1" GNBH="YS_FGS_0010"/>
+	<node id="JSYT_YSGL_NDXQYS" caption="年度正式预算编制" contentView="JYPT_YSGL_YSBZ_NEW.form1" forms="JYPT_YSGL_YSBZ_NEW" openType="NDZSYS" hideMenuView="1" openNum="-1"  GNBH="YS_FGS_0010"/>
+	<node id="JYPT_NDYS_YSSH" caption="年度预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="年度预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="NDYSSH" openNum="-1" hideMenuView="1" />
+	<node id="JYPT_YSGL_NDYS_ZJ" caption="年度正式预算追加" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="年度正式预算追加" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_ZJNDYS"   contentView="JYPT_YSGL_ZJNDYS.form1" openType="NDYSZJ" hideMenuView="1" openNum="-1"  GNBH="YS_FGS_0015"/>
+	<node id="JYPT_YSGL_NDYS_ZJSH" caption="年度追加预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="年度追加预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="DB_NDZJYS" openNum="-1" hideMenuView="1" />
+	<!--<node id="JYPT_YDYS_YSSH" caption="审核月度预算" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="审核月度预算" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="YDYSSH" hideMenuView="1" FUN_NO=""/>-->
+    <node id="JYPT_YSGL_PHNDYS" caption="年度正式预算平衡" contentView="JYPT_YSGL_PHNDYS.form1" forms="JYPT_YSGL_PHNDYS" openType="NDYSPH" GNBH="YS_FGS_0020"/>
+	<node id="JYPT_YSGL_PHNDYSSH" caption="年度平衡预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="年度平衡预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="DB_NDPHYS" openNum="-1"  hideMenuView="1" />
+
+  </FGS_YSGL>
+  <FGS_YDYS>
+  	<node id="JYPT_YDYS_JGYSFYFT" caption="月度预算分摊" contentView="JYPT_YSGL_JGYSFYFT.form1" forms="JYPT_YSGL_JGYSFYFT" openType="YDYSFT" showLeftSideView="0"  hideMenuView="1" nodeClazz="com.efounder.form.node::FormNode" openNum="-1"  GNBH="YS_FGS_0005"/>
+	<node id="JSYT_YSGL_NDXQYS" caption="月度正式预算编制" contentView="JYPT_YSGL_YSBZ_NEW.form1" forms="JYPT_YSGL_YSBZ_NEW" openType="YDYS"  hideMenuView="1" GNBH="YS_FGS_0010"/>
+	<node id="JYPT_YDYS_YSSH" caption="月度正式预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="月度正式预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="YDYSSH" openNum="-1"  hideMenuView="1" />
+	<node id="JYPT_YSGL_YDYS_ZJ" caption="月度预算追加" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="月度预算追加" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_ZJNDYS"   contentView="JYPT_YSGL_ZJNDYS.form1" openType="YDYSZJ" hideMenuView="1" openNum="-1"  GNBH="YS_FGS_0015"/>
+	<node id="JYPT_YSGL_YDYS_ZJSH" caption="月度追加预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="月度追加预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="DB_YDZJYS" openNum="-1"  hideMenuView="1"/>
+	
+	<node id="JYPT_YSGL_PHYDYS" caption="月度正式预算平衡" contentView="JYPT_YSGL_PHNDYS.form1" forms="JYPT_YSGL_PHNDYS" openType="YDYSPH" GNBH="YS_FGS_0020"/>
+	<node id="JYPT_YSGL_PHYDYSSH" caption="月度平衡预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="月度平衡预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="DB_YDPHYS" openNum="-1"  hideMenuView="1" />
+
+	<node id="JYPT_YSGL_YSSF" caption="月度预算释放" contentView="JYPT_YSGL_YSSF.form1" forms="JYPT_YSGL_YSSF"  openType="YDYSSF" GNBH="YS_FGS_0025"/>	
+
+  </FGS_YDYS>
+  
+  <FGS_FYTBGL>
+		<node id="JYPT_YSGL_FITB" caption="同步SAP损益类费用" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="同步SAP损益类费用" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_FITB"
+			contentView="JYPT_YSGL_FITB.form1" openType="OPER" showLeftSideView="0" FUN_NO="HSGL_TBSAPCB" hideMenuView="1" GNBH="YS_FGS_0030"/>
+
+		<node id="JYPT_YSGL_COTB" caption="同步SAP成本类费用" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="同步SAP成本类费用" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_COTB"
+			contentView="JYPT_YSGL_COTB.form1" openType="OPER" showLeftSideView="0" FUN_NO="HSGL_TBSAPCB" hideMenuView="1" GNBH="YS_FGS_0030"/>
+		<node id="JYPT_YSGL_CBTQPZ" caption="ERP成本提取配置" icon16="images/FLEXMMEnterprise/menu/16/sanji.png" title="ERP成本提取配置" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_CBTQPZ" 
+			contentView="JYPT_YSGL_CBTQPZ.form1" showLeftSideView="0" GNBH="SUPER"/>
+  </FGS_FYTBGL>
+  
+  <FGS_FZGL>
+	<!--
+	<node id="JYPT_YSGL_DBYWJK" caption="待办业务汇总" contentView="JYPT_YSGL_DBYWJK.form1" forms="JYPT_YSGL_DBYWJK" openType="NDXQYS" />
+	-->
+	<node id="JYPT_YSGL_YSLCSBQK" caption="预算上报监控" contentView="JYPT_YSGL_YSLCSBQK.form1" forms="JYPT_YSGL_YSLCSBQK"   GNBH="YS_FGS_0035"/>	
+	<!--
+	<node id="YSGL_FZGL_DBYWCX" caption="预算上报监控" icon="images/FLEXMMEnterprise/menu/16/sanji.png" prepareTitle="预算上报监控" forms="JYPT_YSGL_DBYWCXTJ,JYPT_YSGL_DBYWJKCXLB" prepareView="JYPT_YSGL_DBYWCXTJ.form1" contentView="JYPT_YSGL_DBYWJKCXLB.form1" prepareWidth="388" prepareHeight="450" hideMenuView="1" GNBH="YS_FGS_0035"/>
+  	-->
+	<node id="YSGL_FZGL_YSSJDKZ" caption="预算上报控制" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算上报控制" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSJDKZB"   contentView="JYPT_YSGL_YSSJDKZB.form1" showLeftSideView="0" GNBH="YS_FGS_0040" DWSX="0"/>
+  	<node id="YSGL_FZGL_YSFCGL" caption="预算封存管理" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算封存管理" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSFCGL"   contentView="JYPT_YSGL_YSFCGL.form1" MKLX="CBYS" hideMenuView="1" GNBH="YS_FGS_0045" />
+    <node id="JYPT_YSGL_CNXGL" caption="形成TR预算" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="形成TR预算" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_CNXGL"   contentView="JYPT_YSGL_CNXGL.form1" MKLX="CBYS" hideMenuView="1" GNBH="YS_FGS_0050" />
+
+  
+  </FGS_FZGL>
+<FGS_JCSJ>
+	<node id="JYPT_YSGL_ZCXM" caption="预算项目字典" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算支出项目" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_ZCXM"   contentView="JYPT_YSGL_ZCXM.form1" showLeftSideView="0" GNBH="SUPER"/>
+	<node id="YSGL_DWZCXM" caption="单位选用预算项目"   forms="JYPT_YSGL_DWZCXM"   contentView="JYPT_YSGL_DWZCXM.form1" showLeftSideView="0" hideMenuView="1" GNBH="YS_FGS_0055" />
+	<node id="YSGL_YHZCXM" caption="用户主管预算项目" forms="JYPT_YSGL_YHZCXM"   contentView="JYPT_YSGL_YHZCXM.form1" showLeftSideView="0" hideMenuView="1" GNBH="YS_FGS_0058" />
+
+	<node id="YSGL_CNXMZD" caption="承诺项目字典"  forms="JYPT_YSGL_CNXMZD" contentView="JYPT_YSGL_CNXMZD.form1" prepareWidth="330" prepareHeight="160" GNBH="SUPER"/>
+	<!--<node id="YSGL_LRDWBBDY" caption="预算辅助数据维护单位配置" forms="JYPT_YSGL_LRDWBBDY" hideMenuView="1"  contentView="JYPT_YSGL_LRDWBBDY.form1" showLeftSideView="0" FUN_NO="YSGL_093"/>
+	<node id="YSGL_ERS_FYXM" caption="ERS费用项目字典" icon="images/FLEXMMEnterprise/menu/16/sanji.png" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_ERSFYXM"  contentView="JYPT_YSGL_ERSFYXM.form1" prepareWidth="330" prepareHeight="160"  FUN_NO="YSGL_095"/>
+
+	<node id="YSGL_CW_YSZBZD" caption="预算指标字典" icon="images/FLEXMMEnterprise/menu/16/sanji.png" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSZBZD"   contentView="JYPT_YSGL_YSZBZD.form1" prepareWidth="330" prepareHeight="160"  FUN_NO="SUPER" />
+	<node id="YSGL_CW_DWYSZB" caption="单位预算指标" icon="images/FLEXMMEnterprise/menu/16/sanji.png" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_DWYSZB"   contentView="JYPT_YSGL_DWYSZB.form1" prepareWidth="330" prepareHeight="160" FUN_NO="YSGL_125" />
+	<node id="YSGL_CW_YHYSZB" caption="用户预算指标" icon="images/FLEXMMEnterprise/menu/16/sanji.png" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YHYSZB"   contentView="JYPT_YSGL_YHYSZB.form1" prepareWidth="330" prepareHeight="160" FUN_NO="YSGL_125" />
+	<node id="YSGL_CW_YSZBDYDD" caption="预算指标对应订单"  forms="JYPT_YSGL_YSZBDYDD"   contentView="JYPT_YSGL_YSZBDYDD.form1" prepareWidth="330" prepareHeight="160" FUN_NO="SUPER" />
+	<node id="YSGL_CW_YSZBDYSCGC" caption="预算指标对应生产过程"  forms="JYPT_YSGL_YSZBDYSCGC"   contentView="JYPT_YSGL_YSZBDYSCGC.form1" prepareWidth="330" prepareHeight="160" FUN_NO="SUPER" />
+
+	<node id="YSGL_CW_CW_YSZBKZ" caption="预算指标控制"  forms="JYPT_YSGL_YSZBKZ"   contentView="JYPT_YSGL_YSZBKZ.form1" prepareWidth="330" prepareHeight="160" />-->
+
+	<node id="YSGL_JJZXZD" caption="基金中心字典"  forms="JYPT_YSGL_JJZXZD" contentView="JYPT_YSGL_JJZXZD.form1" prepareWidth="330" prepareHeight="160" GNBH="SUPER"/>
+</FGS_JCSJ>
+<FGS_TJCX>
+    <node id="YSGL_CBYSZHCX" caption="预算提报查询（分项目）" prepareTitle="预算提报查询（分项目）" forms="JYPT_YSGL_CBYSZHCX,JYPT_YSGL_CBYSZHCXLB"  prepareView="JYPT_YSGL_CBYSZHCX.form1" contentView="JYPT_YSGL_CBYSZHCXLB.form1" prepareWidth="500" prepareHeight="520" hideMenuView="1" GNBH="YS_FGS_0060"/>
+    <node id="YSGL_YDLJYSCX" caption="预算执行查询（分项目）" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算执行查询（分项目）" hideMenuView="1" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YDLJYSCX"   contentView="JYPT_YSGL_YDLJYSCX.form1" showLeftSideView="0" GNBH="YS_FGS_0060"/>
+	<!--
+	<node id="YSGL_TJCX_YSFTZTQUERY" caption="机关预算分摊状态查询" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="机关预算分摊状态查询" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSFTZTQUERY"   contentView="JYPT_YSGL_YSFTZTQUERY.form1" showLeftSideView="0" FUN_NO="YSGL_062"/>
+	-->
+	<!--
+	<node id="YSGL_TJCX_FZYSSJQUERY" caption="辅助预算数据查询" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="辅助预算数据查询" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_XMDYBBYSJLRCX"   opentype='FZSJCX' contentView="JYPT_YSGL_XMDYBBYSJLRCX.form1" showLeftSideView="0" FUN_NO="YSGL_063"/>
+	-->
+
+	<node id="YSGL_DWSCGCYSCX" caption="预算提报查询（分过程）" prepareTitle="预算提报查询（分过程）" prepareWidth="550" prepareHeight="520" forms="JYPT_YSGL_DWSCGCYSCX,JYPT_YSGL_DWSCGCYSCXLB" contentView="JYPT_YSGL_DWSCGCYSCXLB.form1" prepareView="JYPT_YSGL_DWSCGCYSCX.form1" GNBH="YS_FGS_0060"/>
+	<node id="YSGL_FZYSSJQUERY" caption="预算执行查询（分过程）"  forms="JYPT_YSGL_SCGYSJSCX" contentView="JYPT_YSGL_SCGYSJSCX.form1" prepareWidth="330" prepareHeight="160" showLeftSideView="0" opentype='FZSJCX' GNBH="YS_FGS_0060"/>
+	
+	<node id="YSGL_DWYSFHLCX" caption="预算符合率查询" icon16="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算符合率查询" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_DWYSFHLCX" contentView="JYPT_YSGL_DWYSFHLCX.form1"  showLeftSideView="0" GNBH="YS_FGS_0065"/>
+	
+	<node id="YSGL_TJCX_FZYSSJBBWCQK" caption="辅助预算数据填报情况" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="辅助预算数据完成情况" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="YSGL_TJCX_FZYSSJBBWCQK"   opentype='FZSJCX' contentView="YSGL_TJCX_FZYSSJBBWCQK.form1" showLeftSideView="0" GNBH="YS_FGS_0070"/>
+	
+	<node id="YSGL_ZCXMDYKMCX" caption="预算项目对应科目查询" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算项目对应科目查询" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_ZCXMDYKMCX"   contentView="JYPT_YSGL_ZCXMDYKMCX.form1" showLeftSideView="0" openType="QUERY" GNBH=""/>
+	<node id="YSGL_ZCXMDYYH" caption="预算项目对应用户查询" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="用户预算项目查询" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YHYSXMQUERY"   contentView="JYPT_YSGL_YHYSXMQUERY.form1" showLeftSideView="0" openType="QUERY" GNBH="SUPER"/>
+
+	
+	<!--
+	<node id="YSGL_JDYSZXJDYJ" caption="季度预算执行进度预警"  forms="JYPT_YSGL_JDYSZXJDYJ" contentView="JYPT_YSGL_JDYSZXJDYJ.form1" prepareWidth="330" prepareHeight="160" showLeftSideView="0"/>
+	-->
+</FGS_TJCX>
+
+<KTJ_YSGL>
+		<node id="JYPT_KTJYS_NDYSBZ" caption="年度预算编制" contentView="JYPT_KTJYS_YSLB.form1" forms="JYPT_KTJYS_YSLB" openType="NDYSBZ" fzbh="0001" hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_NDYSSH" caption="年度预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="年度预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_KTJYS_YSLB"   contentView="JYPT_KTJYS_YSLB.form1" openType="NDYSBZ" queryType = "NDYSSH" fzbh="0001" hideMenuView="1" GNBH="SUPER"/>
+
+		</KTJ_YSGL>
+	<KTJ_YDYS>
+		<node id="JYPT_KTJYS_YDYSBZ" caption="月度预算编制" contentView="JYPT_YSGL_YSBZ_NEW.form1" forms="JYPT_YSGL_YSBZ_NEW" openType="YDYS"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_YDYSSH" caption="月度预算审核" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="月度预算审核" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSH_NEW"   contentView="JYPT_YSGL_YSSH_NEW.form1" openType="YDYSSH" hideMenuView="1" GNBH="SUPER"/>
+		<!--
+		<node id="JSYT_YSGL_NDXQYS" caption="月度预算分析" contentView="JYPT_KTJYS_YSFX_YDYSFX.form1" forms="JYPT_KTJYS_YSFX_YDYSFX" openType="YDYS"  hideMenuView="1" GNBH="SUPER"/>
+		-->
+
+		</KTJ_YDYS>
+ 
+	<KTJ_YSFX>
+	
+		<node id="JSYT_KTJYS_YSZXFX_BK" caption="预算执行分析（分板块）" contentView="JYPT_KTJYS_YSLB.form1" forms="JYPT_KTJYS_YSLB" openType="YDYSBKFX" fzbh="0002" hideMenuView="1" GNBH="SUPER"/>	
+		
+		<node id="JSYT_KTJYS_YSZXFX_DW" caption="预算执行分析（分单位）" contentView="JYPT_KTJYS_YSLB.form1" forms="JYPT_KTJYS_YSLB" openType="YDYSDWFX"    fzbh="0003" hideMenuView="1" GNBH="SUPER"/>
+
+		<node id="JSYT_KTJYS_YSZXFX_BKSH" caption="预算执行分析审核" contentView="JYPT_KTJYS_YDYSFXLB.form1" forms="JYPT_KTJYS_YDYSFXLB" openType="YDYS"  hideMenuView="1" GNBH="SUPER"/>
+
+	</KTJ_YSFX>
+		
+	<KTJ_FYTBGL>
+		<node id="JSYT_KTJYS_TBAICFY" caption="同步AIC发生数" contentView="JYPT_KTJYS_AICTB.form1" forms="JYPT_KTJYS_AICTB" openType="AICTB"  hideMenuView="1" GNBH="SUPER"/>
+	</KTJ_FYTBGL>
+  
+ 	<KTJ_FZGL>
+		<node id="JYPT_KTJYS_ZQSZ" caption="单位账期设置" contentView="JYPT_KTJYS_ZQSZ.form1" forms="JYPT_KTJYS_ZQSZ" openType="YDYS"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="YSGL_KTJYS_YSSJDKZ" caption="预算上报控制" icon="images/FLEXMMEnterprise/menu/16/sanji.png" title="预算上报控制" clazz="formNode" nodeClazz="com.efounder.form.node::FormNode" forms="JYPT_YSGL_YSSJDKZB"   contentView="JYPT_YSGL_YSSJDKZB.form1" showLeftSideView="0" GNBH="SUPER" DWSX="1"/>
+		<node id="JYPT_KTJYS_YSFC" caption="预算封存管理" contentView="JYPT_KTJYS_YSFC.form1" forms="JYPT_KTJYS_YSFC"  hideMenuView="1" GNBH="SUPER"/>
+	
+	</KTJ_FZGL>
+	
+	<KTJ_JCSJ>	
+        <node id="JYPT_KTJYS_YSXMLB" caption="预算项目类别" contentView="JYPT_KTJYS_YSXMLB.form1" forms="JYPT_KTJYS_YSXMLB" openType="JCSJ"  hideMenuView="1" GNBH="SUPER"/>	
+		<node id="JYPT_KTJYS_YSFXKJLB" caption="预算分析口径类别" contentView="JYPT_KTJYS_YSFXKJLB.form1" forms="JYPT_KTJYS_YSFXKJLB" openType="JCSJ"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_YSFXKJ" caption="预算分析口径" contentView="JYPT_KTJYS_YSFXKJ.form1" forms="JYPT_KTJYS_YSFXKJ" openType="JCSJ"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_YSXM" caption="预算项目维护" contentView="JYPT_KTJYS_YSXM.form1" forms="JYPT_KTJYS_YSXM" openType="JCSJ"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_BKZD" caption="板块字典维护" contentView="JYPT_KTJYS_BKZD.form1" forms="JYPT_KTJYS_BKZD" openType="JCSJ"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_DWYSXM" caption="单位对应预算项目" contentView="JYPT_KTJYS_DWYSXM.form1" forms="JYPT_KTJYS_DWYSXM" openType="JCSJ"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_FSSTBFZ" caption="同步分组维护" contentView="JYPT_KTJYS_FSSTBFZ.form1" forms="JYPT_KTJYS_FSSTBFZ" openType="FYTBGL"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_BKTBSZ" caption="板块同步条件设置" contentView="JYPT_KTJYS_BKTBSZ.form1" forms="JYPT_KTJYS_BKTBSZ" openType="FYTBGL"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_DWZBBB" caption="单位选用预算格式" contentView="JYPT_KTJYS_DWZBBB.form1" forms="JYPT_KTJYS_DWZBBB" openType="FYTBGL"  hideMenuView="1" GNBH="SUPER"/>
+		
+	</KTJ_JCSJ>
+	<KTJ_TJCX>
+		<node id="JYPT_KTJYS_YSZXCX_QJ" caption="预算执行查询（按期间）" contentView="JYPT_KTJYS_YSZXCX_QJ.form1" forms="JYPT_KTJYS_YSZXCX_QJ" openType="KTJ_TJCX"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_YSZXCX_CBZX" caption="预算执行查询（按成本中心）" contentView="JYPT_KTJYS_YSZXCX_CBZX.form1" forms="JYPT_KTJYS_YSZXCX_CBZX" openType="KTJ_TJCX"  hideMenuView="1" GNBH="SUPER"/>
+		<node id="JYPT_KTJYS_YSZXCX_BK" caption="预算执行查询（按板块）" contentView="JYPT_KTJYS_YSZXCX_BK.form1" forms="JYPT_KTJYS_YSZXCX_BK" openType="KTJ_TJCX"  hideMenuView="1" GNBH="SUPER"/>
+		
+		<node id="JYPT_KTJYS_CXYSLB" caption="预算单据查询" contentView="JYPT_KTJYS_CXYSLB.form1" forms="JYPT_KTJYS_CXYSLB" openType="KTJ_TJCX"  hideMenuView="1" GNBH="SUPER"/>
+	</KTJ_TJCX>
+	
+</package>

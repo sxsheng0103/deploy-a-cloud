@@ -1,0 +1,50 @@
+html{
+    overflow-x:hidden
+}
+
+#scroll * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+#scroll {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 0 solid #000;
+    overflow: auto;
+}
+
+#scroll ul {
+    float: left;
+    height: 100%;
+    margin-right: -999em;
+    white-space: nowrap;
+    list-style: none;
+    overflow-x:auto;
+    overflow-y:hidden;
+}
+
+#scroll li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 10px;
+    text-align: center;
+    float: left;
+    display: inline;
+}
+
+#scroll img {
+    display: block;
+    border: 2px solid white;
+}
+
+#scroll a:active img, #scroll a:focus img, #scroll a:hover img {
+    border: 2px solid darkgoldenrod;
+}
+#scroll {
+    padding: 2px 0 0;
+    display: block;
+}

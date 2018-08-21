@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10,IE=edge"> -->
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=8"> -->
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=9">
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>index</title>
+    <script type="text/javascript" language="javascript"  src="GWTFormPlay/GWTFormPlay.nocache.js"></script>
+    
+ 
+	<script src="js/excel/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="js/excel/jquery-ui.min.js" type="text/javascript"></script>
+	<link href="js/excel/jquery-wijmo.css" rel="stylesheet" type="text/css" />
+	<script src="js/excel/jquery.wijmo.wijspread.all.3.20143.15.min.js" type="text/javascript"></script>
+	
+	<script src="js/excel/main.js" type="text/javascript"></script>
+	<link href="js/excel/jquery.wijmo.wijspread.3.20143.15.css" rel="stylesheet" type="text/css" />
+	<link href="css/explore.css" rel="stylesheet" type="text/css" />
+	
+    
+    <script src="js/OpenLayers.js"></script>
+	<script src="js/OpenStreetMap.js"></script> 
+	 
+	
+	<link href="js/yfiles.css" rel="stylesheet" type="text/css" />
+	<script src="js/require.js" type="text/javascript"></script>
+	<script src="js/yfiles/es5-shim.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    	
+    	
+    		/**
+    		 * 产品初始化之前调用此方法
+    		 */
+    		function beforeInitApplication() {
+					// 设置产品ID
+    			window.setObject("Product", "申请产品的名称");
+    			// 设置授权码
+    			window.setObject("licenseID", "授权码");
+    		}
+    		
+    		function changeParentURL() {
+					// 格式：#ExplorerPlace:菜单id
+					var hashStr = window.location.hash;
+					if ( hashStr == null ) return;
+					// 获取到菜单id
+					var menuId = hashStr.substring(hashStr.indexOf(":") + 1);
+					// 调用父窗口，修改hash
+					// window.location.hash="abc";
+					window.parent.location.hash=menuId;
+				}
+			 window.addEventListener('hashchange', changeParentURL, false);
+
+    </script>
+    
+  </head>
+
+  <body>
+
+  </body>
+</html>
